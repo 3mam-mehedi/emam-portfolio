@@ -26,20 +26,21 @@ export default function Navbar() {
   ];
 
   const gradientText = {
-    background: "linear-gradient(90deg, #07C8F9, #0D41E1)",
+    background: "linear-gradient(90deg, #0968E5, #091970)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   };
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
-
       {/* SVG GRADIENT */}
       <svg width="0" height="0">
-        <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#07C8F9" />
-          <stop offset="100%" stopColor="#0D41E1" />
-        </linearGradient>
+        <defs>
+          <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#0968E5" />
+            <stop offset="100%" stopColor="#091970" />
+          </linearGradient>
+        </defs>
       </svg>
 
       {/* GLASS BACKGROUND */}
@@ -47,7 +48,6 @@ export default function Navbar() {
 
       {/* MAIN WRAPPER */}
       <div className="relative flex items-center justify-center px-4 lg:px-12 py-2">
-
         <div className="w-full flex items-center justify-between lg:justify-center lg:gap-24">
 
           {/* LOGO */}
@@ -60,7 +60,6 @@ export default function Navbar() {
 
           {/* DESKTOP MENU */}
           <div className="hidden lg:flex items-center gap-8">
-
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
@@ -83,10 +82,14 @@ export default function Navbar() {
                   <span
                     className={`
                       absolute left-0 -bottom-1 h-[2px] rounded-full
-                      bg-gradient-to-r from-[#07C8F9] via-[#3FD4FF] to-[#0D41E1]
-                      shadow-[0_0_10px_#07C8F9]
+                      bg-gradient-to-r from-[#0968E5] to-[#091970]
+                      shadow-[0_0_12px_rgba(9,104,229,0.7)]
                       transition-all duration-300 ease-out
-                      ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+                      ${
+                        isActive
+                          ? "w-full"
+                          : "w-0 group-hover:w-full"
+                      }
                     `}
                   />
                 </NavLink>
@@ -94,7 +97,7 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* MOBILE ICON (BIG GAP FIX) */}
+          {/* MOBILE ICON */}
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden ml-auto"
@@ -117,10 +120,7 @@ export default function Navbar() {
           open ? "max-h-96 mt-3" : "max-h-0"
         }`}
       >
-        <ul
-          className="flex flex-col items-center gap-5 py-6 mx-auto w-[88%]
-          backdrop-blur-3xl border border-white/10 rounded-3xl"
-        >
+        <ul className="flex flex-col items-center gap-5 py-6 mx-auto w-[88%] backdrop-blur-3xl border border-white/10 rounded-3xl">
           {navItems.map((item) => {
             const Icon = item.icon;
 
@@ -136,6 +136,7 @@ export default function Navbar() {
                     strokeWidth={2.2}
                     style={{ stroke: "url(#navGradient)" }}
                   />
+
                   <span style={gradientText}>{item.name}</span>
                 </NavLink>
               </li>

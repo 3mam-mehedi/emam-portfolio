@@ -1,56 +1,27 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Main gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-blue-950 to-black" />
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-[#05060a]">
 
-      {/* Animated blob 1 */}
-      <motion.div
-        className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"
-        animate={{
-          x: [0, 50, -50, 0],
-          y: [0, 30, -30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Gradient Mesh Layer 1 */}
+      <div className="absolute inset-0 opacity-70">
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-600/20 blur-[120px]" />
+        <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-500/20 blur-[140px]" />
+        <div className="absolute bottom-[-20%] left-[30%] w-[600px] h-[600px] rounded-full bg-indigo-600/20 blur-[160px]" />
+      </div>
 
-      {/* Animated blob 2 */}
-      <motion.div
-        className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl"
-        animate={{
-          x: [0, -50, 50, 0],
-          y: [0, -30, 30, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Gradient Mesh Layer 2 (movement feel) */}
+      <div className="absolute inset-0 opacity-60 animate-pulse">
+        <div className="absolute top-[10%] left-[20%] w-[700px] h-[700px] rounded-full bg-sky-500/10 blur-[180px]" />
+        <div className="absolute bottom-[10%] right-[20%] w-[650px] h-[650px] rounded-full bg-blue-400/10 blur-[200px]" />
+      </div>
 
-      {/* Animated blob 3 */}
-      <motion.div
-        className="absolute top-1/2 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl"
-        animate={{
-          x: [0, -30, 30, 0],
-          y: [0, 50, -50, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      {/* Dark overlay for depth */}
+      <div className="absolute inset-0 bg-black/40" />
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      {/* Vignette (Gemini feel) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,#05060a_100%)]" />
     </div>
   );
 }

@@ -28,13 +28,20 @@ import {
   SiArduino,
 } from "react-icons/si";
 
-/* ================= HOME STYLE ANIMATION ================= */
+/* ================= GRADIENT ================= */
+const gradientText = {
+  background: "linear-gradient(90deg, #0968E5, #091970)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+};
+
+/* ================= ANIMATION ================= */
 const fadeLeft = {
   hidden: { x: -60, opacity: 0 },
   show: { x: 0, opacity: 1 },
 };
 
-/* ================= DATA ================= */
+/* ================= EDUCATION DATA ================= */
 const educations = [
   {
     institution: "Habibullah Bahar College (National University)",
@@ -64,8 +71,7 @@ const educations = [
   },
 ];
 
-/* ================= COMPONENTS ================= */
-
+/* ================= EDUCATION CARD ================= */
 function EducationCard({ item, delay = 0 }) {
   return (
     <motion.article
@@ -87,19 +93,19 @@ function EducationCard({ item, delay = 0 }) {
             <h2 className="text-lg font-semibold text-white">
               {item.degree}
             </h2>
-            <p className="text-slate-300 text-sm">
-              {item.institution}
-            </p>
+            <p className="text-slate-300 text-sm">{item.institution}</p>
           </div>
         </div>
 
-        <span className="text-cyan-300 text-sm">{item.period}</span>
+        <span className="text-sm text-white">
+          {item.period}
+        </span>
       </div>
 
       <p className="text-slate-400 text-sm mb-4">{item.summary}</p>
 
       {item.gpa && (
-        <span className="text-cyan-300 text-sm">
+        <span style={gradientText} className="text-sm font-semibold">
           CGPA: {item.gpa}
         </span>
       )}
@@ -113,6 +119,7 @@ function EducationCard({ item, delay = 0 }) {
   );
 }
 
+/* ================= SKILL CARD ================= */
 function SkillCard(props) {
   return (
     <motion.div
@@ -125,8 +132,16 @@ function SkillCard(props) {
     >
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         <div className="flex items-center gap-3">
-          <props.icon className="text-cyan-400 text-2xl" />
-          <h2 className="text-white font-semibold">{props.title}</h2>
+          <div
+            className="text-3xl"
+            style={{ color: "#0968E5" }}
+          >
+            <props.icon />
+          </div>
+
+          <h2 className="font-semibold text-white text-lg">
+            {props.title}
+          </h2>
         </div>
 
         <div className="flex items-center gap-3 text-xs text-slate-300">
@@ -134,8 +149,10 @@ function SkillCard(props) {
             <img
               src={props.logo}
               className="w-6 h-6 rounded-full bg-white p-1"
+              alt=""
             />
           )}
+
           <span>{props.institute}</span>
           <span>• {props.year}</span>
           <span>• {props.duration}</span>
@@ -145,12 +162,19 @@ function SkillCard(props) {
       <div className="grid grid-cols-2 gap-2">
         {props.items.map((it, i) => {
           const Ico = it.icon;
+
           return (
             <div
               key={i}
               className="flex items-center gap-2 bg-white/10 p-2 rounded-lg"
             >
-              <Ico className="text-cyan-300" />
+              <div
+                className="text-lg"
+                style={{ color: "#0968E5" }}
+              >
+                <Ico />
+              </div>
+
               <span className="text-xs text-slate-200">
                 {it.label}
               </span>
@@ -162,6 +186,7 @@ function SkillCard(props) {
   );
 }
 
+/* ================= CIRCLE SECTION ================= */
 function Circle({ data, delay = 0 }) {
   return (
     <motion.div
@@ -170,14 +195,27 @@ function Circle({ data, delay = 0 }) {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: "easeOut", delay }}
-      className="w-44 h-44 flex flex-wrap gap-2 justify-center items-center"
+      className="
+        w-full
+        md:w-44 md:h-44
+        grid grid-cols-4
+        md:flex md:flex-wrap
+        gap-2 justify-center items-center
+      "
     >
       {data.map((item, i) => (
         <div
           key={i}
-          className="w-[40%] h-[40%] flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl"
+          className="
+            h-14 w-14
+            md:w-[40%] md:h-[40%]
+            flex items-center justify-center
+            bg-white/10 backdrop-blur-xl
+            border border-white/20
+            rounded-2xl
+          "
         >
-          <div className="text-3xl" style={{ color: item.color }}>
+          <div className="text-2xl md:text-3xl" style={{ color: item.color }}>
             {item.icon}
           </div>
         </div>
@@ -186,7 +224,7 @@ function Circle({ data, delay = 0 }) {
   );
 }
 
-/* ================= MAIN ================= */
+/* ================= MAIN COMPONENT ================= */
 export default function Education() {
   return (
     <>
@@ -199,17 +237,31 @@ export default function Education() {
           <motion.h1
             variants={fadeLeft}
             initial="hidden"
-            animate="show"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="text-4xl font-bold text-white mb-6"
+            className="text-4xl font-bold mb-3 text-white"
           >
             Education
           </motion.h1>
 
+          <motion.p
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
+            className="text-slate-400 mb-8 max-w-3xl"
+          >
+            My learning path combines formal study with practical training used directly in product work.
+          </motion.p>
+
+
+
           {/* EDUCATION */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
             <div className="md:col-span-2">
-              <EducationCard item={educations[0]} delay={0} />
+              <EducationCard item={educations[0]} />
             </div>
 
             <EducationCard item={educations[1]} delay={0.1} />
@@ -217,16 +269,9 @@ export default function Education() {
           </div>
 
           {/* SKILLS TITLE */}
-          <motion.h1
-            variants={fadeLeft}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="text-4xl font-bold text-white mb-6"
-          >
+          <h1 className="text-4xl text-white font-bold mb-6">
             Skills
-          </motion.h1>
+          </h1>
 
           {/* SKILLS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
@@ -284,48 +329,60 @@ export default function Education() {
             />
           </div>
 
-          {/* CIRCLES */}
-          <div className="flex flex-wrap justify-center gap-8">
-            <Circle
-              delay={0}
-              data={[
-                { icon: <FaHtml5 />, color: "#e34a24" },
-                { icon: <FaCss3Alt />, color: "#2b57f8" },
-                { icon: <FaBootstrap />, color: "#6f2cf5" },
-                { icon: <SiTailwindcss />, color: "#00bbff" },
-              ]}
-            />
+          {/* CIRCLE SECTION */}
+<div className="w-full overflow-hidden px-2 md:px-0">
+  <div className="grid grid-cols-8 gap-1 md:flex md:flex-wrap md:justify-center md:gap-8">
 
-            <Circle
-              delay={0.1}
-              data={[
-                { icon: <SiCplusplus />, color: "#1469be" },
-                { icon: <FaNodeJs />, color: "#65b849" },
-                { icon: <SiPhp />, color: "#797db5" },
-                { icon: <SiMysql />, color: "#0a707f" },
-              ]}
-            />
+    {[
+      { icon: <FaHtml5 />, color: "#e34a24" },
+      { icon: <FaCss3Alt />, color: "#2b57f8" },
+      { icon: <FaBootstrap />, color: "#6f2cf5" },
+      { icon: <SiTailwindcss />, color: "#00bbff" },
 
-            <Circle
-              delay={0.2}
-              data={[
-                { icon: <FaReact />, color: "#00d9ff" },
-                { icon: <FaLaravel />, color: "#ff2919" },
-                { icon: <FaFlutter />, color: "#5ec9f7" },
-                { icon: <SiDart />, color: "#02599c" },
-              ]}
-            />
+      { icon: <SiCplusplus />, color: "#1469be" },
+      { icon: <FaNodeJs />, color: "#65b849" },
+      { icon: <SiPhp />, color: "#797db5" },
+      { icon: <SiMysql />, color: "#0a707f" },
 
-            <Circle
-              delay={0.3}
-              data={[
-                { icon: <SiArduino />, color: "#118693" },
-                { icon: <FaGitAlt />, color: "#f05232" },
-                { icon: <FaFigma />, color: "#8f4aff" },
-                { icon: <DiIllustrator />, color: "#ff7b1c" },
-              ]}
-            />
-          </div>
+      { icon: <FaReact />, color: "#00d9ff" },
+      { icon: <FaLaravel />, color: "#ff2919" },
+      { icon: <FaFlutter />, color: "#5ec9f7" },
+      { icon: <SiDart />, color: "#02599c" },
+
+      { icon: <SiArduino />, color: "#118693" },
+      { icon: <FaGitAlt />, color: "#f05232" },
+      { icon: <FaFigma />, color: "#8f4aff" },
+      { icon: <DiIllustrator />, color: "#ff7b1c" },
+    ].map((item, i) => (
+      <motion.div
+        key={i}
+        variants={fadeLeft}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: i * 0.03 }}
+        className="
+          w-10 h-10
+          md:w-16 md:h-16
+          flex items-center justify-center
+          bg-white/10
+          backdrop-blur-xl
+          border border-white/20
+          rounded-xl md:rounded-2xl
+          hover:scale-110
+          transition
+        "
+      >
+        <div
+          className="text-lg md:text-3xl"
+          style={{ color: item.color }}
+        >
+          {item.icon}
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
         </div>
       </div>

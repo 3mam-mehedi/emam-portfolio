@@ -51,6 +51,16 @@ const experiences = [
   },
 ];
 
+const gradientText = {
+  background: "linear-gradient(90deg, #0968E5, #091970)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+};
+
+const gradientBg = {
+  background: "linear-gradient(90deg, #0968E5, #091970)",
+};
+
 export default function Experiences() {
   return (
     <>
@@ -59,13 +69,16 @@ export default function Experiences() {
       <div className="w-full px-4 lg:px-12 pt-24 pb-8">
         <div className="max-w-5xl mx-auto">
 
-          {/* Heading (SMOOTH LIKE HOME) */}
+          {/* Heading */}
           <motion.div
             initial={{ x: -60, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-4xl font-bold text-white mb-4">
+            <h1
+              className="text-4xl text-white font-bold mb-4"
+              
+            >
               Experiences
             </h1>
 
@@ -94,13 +107,15 @@ export default function Experiences() {
                     {item.role}
                   </h2>
 
-                  <span className="text-sm uppercase tracking-[0.2em] text-cyan-300 whitespace-nowrap">
+                  <span
+                    className="text-sm uppercase tracking-[0.2em] text-white/70 whitespace-nowrap"
+                  >
                     {item.period}
                   </span>
                 </div>
 
                 <p className="text-slate-300 flex items-center gap-2 mb-4">
-                  <FaBuilding className="text-cyan-400" />
+                  <FaBuilding style={{ color: "#0968E5" }} />
                   {item.company}
                 </p>
 
@@ -108,9 +123,11 @@ export default function Experiences() {
                   {item.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-slate-200 text-sm border border-white/10 hover:bg-cyan-500/10 transition"
+                      className="flex items-center gap-2 px-3 py-1 rounded-full
+                      bg-white/10 text-slate-200 text-sm border border-white/10
+                      hover:bg-white/15 transition"
                     >
-                      <span className="text-cyan-300">
+                      <span style={{ color: "#0968E5" }}>
                         {skill.icon}
                       </span>
                       {skill.name}

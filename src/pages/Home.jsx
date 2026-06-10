@@ -19,7 +19,7 @@ export default function Home() {
   }, []);
 
   const gradientText = {
-    background: "linear-gradient(90deg, #07C8F9, #0D41E1)",
+    background: "linear-gradient(90deg, #0968E5, #091970)",
     WebkitBackgroundClip: "text",
     WebkitTextFillColor: "transparent",
   };
@@ -29,11 +29,9 @@ export default function Home() {
       <Background />
 
       <section className="min-h-screen flex items-center px-4 lg:px-12 pt-24 pb-8">
-        {/* SAME LAYOUT WIDTH */}
         <div className="max-w-5xl mx-auto w-full">
-          {/* MAIN WRAPPER */}
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-14">
-            
+
             {/* TEXT */}
             <motion.div
               initial={{ x: -60, opacity: 0 }}
@@ -59,15 +57,14 @@ export default function Home() {
                   download
                   className="px-6 py-3 rounded-2xl text-white font-medium shadow-lg transition duration-300 hover:scale-105"
                   style={{
-                    background:
-                      "linear-gradient(90deg, #07C8F9, #0D41E1)",
+                    background: "linear-gradient(90deg, #0968E5, #091970)",
                   }}
                 >
                   Download CV
                 </a>
               </div>
 
-              {/* SOCIALS */}
+              {/* SOCIALS (UNCHANGED) */}
               <div className="flex items-center gap-5 mt-8">
                 <a className="w-12 h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:scale-110 transition text-white">
                   <FaGithub />
@@ -91,10 +88,9 @@ export default function Home() {
               className="flex justify-center"
             >
               <div
-                className="relative w-64 h-80 md:w-96 md:h-[500px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(0,119,255,0.25)]"
+                className="relative w-64 h-80 md:w-96 md:h-[500px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(9,104,229,0.35)]"
                 style={{
-                  borderRadius:
-                    "38% 62% 63% 37% / 30% 30% 70% 70%",
+                  borderRadius: "38% 62% 63% 37% / 30% 30% 70% 70%",
                 }}
               >
                 <img
@@ -104,6 +100,7 @@ export default function Home() {
                 />
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
