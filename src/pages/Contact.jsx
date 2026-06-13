@@ -72,7 +72,12 @@ export default function Contact() {
 
     setStatus("Opening mail client...");
 
-    setForm({ name: "", email: "", message: "" });
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
+
     setErrors({});
   }
 
@@ -80,9 +85,8 @@ export default function Contact() {
     <>
       <Background />
 
-      <section className="h-screen overflow-hidden px-4 lg:px-12 pt-24 pb-8 flex items-center">
+      <section className="h-screen overflow-hidden px-4 lg:px-12 pt-20 md:pt-24 pb-8 flex items-start md:items-center">
         <div className="max-w-5xl mx-auto w-full">
-
           {/* ================= HEADING ================= */}
           <motion.div
             variants={fadeLeft}
@@ -106,10 +110,9 @@ export default function Contact() {
             initial="hidden"
             animate="show"
             transition={{ duration: 1 }}
-            className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:border-cyan-400/30 transition duration-300"
+            className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:scale-[1.01] transition duration-300"
           >
             <div className="grid gap-5">
-
               {/* NAME */}
               <div>
                 <input
@@ -117,7 +120,7 @@ export default function Contact() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-cyan-400 transition"
+                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] transition"
                 />
 
                 {errors.name && (
@@ -134,7 +137,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
-                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-cyan-400 transition"
+                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] transition"
                 />
 
                 {errors.email && (
@@ -152,7 +155,7 @@ export default function Contact() {
                   onChange={handleChange}
                   rows={5}
                   placeholder="Your message..."
-                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-cyan-400 resize-none transition"
+                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] resize-none transition"
                 />
 
                 {errors.message && (
@@ -164,7 +167,6 @@ export default function Contact() {
 
               {/* BUTTON */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
-
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -172,7 +174,7 @@ export default function Contact() {
                   className="px-6 py-3 rounded-2xl text-white font-semibold transition duration-300"
                   style={{
                     background:
-                      "linear-gradient(90deg, #07C8F9, #0D41E1)",
+                      "linear-gradient(90deg, #0968E5, #091970)",
                   }}
                 >
                   Send Message
@@ -187,7 +189,6 @@ export default function Contact() {
                     {status}
                   </motion.p>
                 )}
-
               </div>
             </div>
           </motion.form>

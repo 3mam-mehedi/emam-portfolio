@@ -330,59 +330,59 @@ export default function Education() {
           </div>
 
           {/* CIRCLE SECTION */}
-<div className="w-full overflow-hidden px-2 md:px-0">
-  <div className="grid grid-cols-8 gap-1 md:flex md:flex-wrap md:justify-center md:gap-8">
+          <div className="w-full overflow-hidden px-2 md:px-0 flex justify-center">
+            <div className="grid grid-cols-4 place-items-center gap-2 md:flex md:flex-wrap md:justify-center md:gap-8">
 
-    {[
-      { icon: <FaHtml5 />, color: "#e34a24" },
-      { icon: <FaCss3Alt />, color: "#2b57f8" },
-      { icon: <FaBootstrap />, color: "#6f2cf5" },
-      { icon: <SiTailwindcss />, color: "#00bbff" },
+              {[
+                { icon: <FaHtml5 />, color: "#e34a24" },
+                { icon: <FaCss3Alt />, color: "#2b57f8" },
+                { icon: <FaBootstrap />, color: "#6f2cf5" },
+                { icon: <SiTailwindcss />, color: "#00bbff" },
 
-      { icon: <SiCplusplus />, color: "#1469be" },
-      { icon: <FaNodeJs />, color: "#65b849" },
-      { icon: <SiPhp />, color: "#797db5" },
-      { icon: <SiMysql />, color: "#0a707f" },
+                { icon: <SiCplusplus />, color: "#1469be" },
+                { icon: <FaNodeJs />, color: "#65b849" },
+                { icon: <SiPhp />, color: "#797db5" },
+                { icon: <SiMysql />, color: "#0a707f" },
 
-      { icon: <FaReact />, color: "#00d9ff" },
-      { icon: <FaLaravel />, color: "#ff2919" },
-      { icon: <FaFlutter />, color: "#5ec9f7" },
-      { icon: <SiDart />, color: "#02599c" },
+                { icon: <FaReact />, color: "#00d9ff" },
+                { icon: <FaLaravel />, color: "#ff2919" },
+                { icon: <FaFlutter />, color: "#5ec9f7" },
+                { icon: <SiDart />, color: "#02599c" },
 
-      { icon: <SiArduino />, color: "#118693" },
-      { icon: <FaGitAlt />, color: "#f05232" },
-      { icon: <FaFigma />, color: "#8f4aff" },
-      { icon: <DiIllustrator />, color: "#ff7b1c" },
-    ].map((item, i) => (
-      <motion.div
-        key={i}
-        variants={fadeLeft}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: i * 0.03 }}
-        className="
-          w-10 h-10
-          md:w-16 md:h-16
-          flex items-center justify-center
-          bg-white/10
-          backdrop-blur-xl
-          border border-white/20
-          rounded-xl md:rounded-2xl
-          hover:scale-110
-          transition
-        "
-      >
-        <div
-          className="text-lg md:text-3xl"
-          style={{ color: item.color }}
-        >
-          {item.icon}
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</div>
+                { icon: <SiArduino />, color: "#118693" },
+                { icon: <FaGitAlt />, color: "#f05232" },
+                { icon: <FaFigma />, color: "#8f4aff" },
+                { icon: <DiIllustrator />, color: "#ff7b1c" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  variants={fadeLeft}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.03 }}
+                  className="
+  w-14 h-14
+  md:w-20 md:h-20
+  flex items-center justify-center
+  bg-white/10
+  backdrop-blur-xl
+  border border-white/20
+  rounded-2xl
+  hover:scale-110
+  transition
+"
+                >
+                  <div
+                    className="text-2xl md:text-4xl"
+                    style={{ color: item.color }}
+                  >
+                    {item.icon}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
         </div>
       </div>

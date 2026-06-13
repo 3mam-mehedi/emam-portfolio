@@ -40,7 +40,7 @@ export default function Home() {
               className="flex flex-col items-center md:items-start text-center md:text-left"
             >
               <h1
-                className="text-[42px] sm:text-[60px] md:text-[72px] leading-none font-bold"
+                className="text-[42px] sm:text-[60px] md:text-[60px] leading-none font-bold"
                 style={gradientText}
               >
                 Emam Mehedi
@@ -94,7 +94,7 @@ export default function Home() {
                 }}
               >
                 <img
-                  src="/assets/profile/emam.png"
+                  src="/assets/profile/2.png"
                   className="w-full h-full object-cover"
                   alt="profile"
                 />

@@ -52,7 +52,7 @@ export default function Navbar() {
 
           {/* LOGO */}
           <img
-            src="/assets/logo/1.png"
+            src="/assets/logo/10.png"
             alt="logo"
             onClick={() => navigate("/")}
             className="w-10 h-10 rounded-full border border-white/10 cursor-pointer"

@@ -2,16 +2,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import {
-  FaReact,
-} from "react-icons/fa";
-
-import { SiTailwindcss } from "react-icons/si";
+import { FaReact } from "react-icons/fa";
+import { SiTailwindcss, SiStripe, SiSocketdotio } from "react-icons/si";
 import { IoLogoNodejs } from "react-icons/io";
 
 import Background from "../components/Background";
 
-/* ================= HOME STYLE ANIMATION ================= */
+/* ================= ANIMATION ================= */
 const fadeLeft = {
   hidden: { x: -60, opacity: 0 },
   show: { x: 0, opacity: 1 },
@@ -24,7 +21,11 @@ const projects = [
     details:
       "React + Node.js business dashboard system with scalable architecture.",
     icon: FaReact,
-    badges: ["React", "Tailwind", "Node.js"],
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "Node.js", icon: IoLogoNodejs, color: "text-[#68A063]" },
+    ],
   },
   {
     name: "E-commerce Store",
@@ -32,7 +33,11 @@ const projects = [
     details:
       "Fullstack store with stripe payment and modern UI/UX system.",
     icon: SiTailwindcss,
-    badges: ["React", "Tailwind", "Stripe"],
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "Stripe", icon: SiStripe, color: "text-[#635BFF]" },
+    ],
   },
   {
     name: "Realtime Chat",
@@ -40,7 +45,11 @@ const projects = [
     details:
       "Socket.io realtime chat application with live messaging.",
     icon: IoLogoNodejs,
-    badges: ["React", "Socket.io", "Node.js"],
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Socket.io", icon: SiSocketdotio, color: "text-white" },
+      { name: "Node.js", icon: IoLogoNodejs, color: "text-[#68A063]" },
+    ],
   },
   {
     name: "Portfolio Website",
@@ -48,18 +57,24 @@ const projects = [
     details:
       "Modern animated portfolio showcasing skills, work, and contact system.",
     icon: FaReact,
-    badges: ["React", "Tailwind", "CSS"],
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "CSS", icon: SiTailwindcss, color: "text-[#264DE4]" },
+    ],
   },
 ];
 
 export default function Projects() {
+  const gradientText =
+    "bg-gradient-to-r from-[#0968E5] to-[#091970] bg-clip-text text-transparent";
+
   return (
     <>
       <Background />
 
       <div className="w-full px-4 lg:px-12 pt-24 pb-8">
         <div className="max-w-5xl mx-auto">
-
           {/* HEADING */}
           <motion.div
             variants={fadeLeft}
@@ -67,7 +82,7 @@ export default function Projects() {
             animate="show"
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-4xl font-bold text-white mb-3">
+            <h1 className={`text-4xl font-bold mb-3 text-white`}>
               Projects
             </h1>
 
@@ -94,21 +109,21 @@ export default function Projects() {
                     ease: "easeOut",
                     delay: idx * 0.15,
                   }}
-                  className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:border-cyan-400/40 hover:scale-[1.02] transition duration-300"
+                  className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:scale-[1.02] transition duration-300"
                 >
                   {/* TITLE */}
                   <div className="mb-4">
                     <div className="flex items-center gap-3 mb-1">
-                      {Icon && (
-                        <Icon className="text-cyan-400 text-2xl" />
-                      )}
+                      <Icon className="text-2xl text-[#0968E5]" />
 
                       <h2 className="text-xl font-semibold text-white">
                         {project.name}
                       </h2>
                     </div>
 
-                    <p className="text-sm text-cyan-300 ml-9">
+                    <p
+                      className={`text-sm ml-9 font-medium ${gradientText}`}
+                    >
                       {project.type}
                     </p>
                   </div>
@@ -120,20 +135,26 @@ export default function Projects() {
 
                   {/* BADGES */}
                   <div className="flex flex-wrap gap-2">
-                    {project.badges.map((b, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1.5 text-xs rounded-lg bg-white/10 border border-white/10 text-slate-200"
-                      >
-                        {b}
-                      </span>
-                    ))}
+                    {project.badges.map((badge, i) => {
+                      const BadgeIcon = badge.icon;
+
+                      return (
+                        <span
+                          key={i}
+                          className="px-3 py-1.5 text-xs rounded-lg bg-white/10 border border-white/10 text-slate-200 flex items-center gap-2"
+                        >
+                          <BadgeIcon
+                            className={`${badge.color} text-sm`}
+                          />
+                          {badge.name}
+                        </span>
+                      );
+                    })}
                   </div>
                 </motion.article>
               );
             })}
           </div>
-
         </div>
       </div>
     </>

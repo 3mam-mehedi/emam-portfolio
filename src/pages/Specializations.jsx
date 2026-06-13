@@ -71,9 +71,24 @@ export default function Specializations() {
     <>
       <Background />
 
+      {/* SVG Gradient Definition */}
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>
+          <linearGradient
+            id="iconGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
+            <stop offset="0%" stopColor="#0968E5" />
+            <stop offset="100%" stopColor="#091970" />
+          </linearGradient>
+        </defs>
+      </svg>
+
       <div className="w-full px-4 lg:px-12 pt-24 pb-8">
         <div className="max-w-5xl mx-auto">
-
           {/* TITLE */}
           <motion.div
             variants={fadeLeft}
@@ -87,7 +102,8 @@ export default function Specializations() {
             </h1>
 
             <p className="text-slate-300 mb-10">
-              Core areas of expertise that help deliver strong frontend experiences and polished digital products.
+              Core areas of expertise that help deliver strong frontend
+              experiences and polished digital products.
             </p>
           </motion.div>
 
@@ -113,7 +129,12 @@ export default function Specializations() {
                   {/* TOP */}
                   <div className="flex items-center gap-3 mb-4">
                     {Icon && (
-                      <Icon className="text-cyan-400 text-2xl" />
+                      <Icon
+                        size={28}
+                        style={{
+                          fill: "url(#iconGradient)",
+                        }}
+                      />
                     )}
 
                     <h2 className="text-xl font-semibold text-white">
@@ -126,7 +147,7 @@ export default function Specializations() {
                     {item.description}
                   </p>
 
-                  {/* BADGES (NOW ALSO FADELEFT) */}
+                  {/* BADGES */}
                   <div className="flex flex-wrap gap-2">
                     {item.badges.map((b, i) => {
                       const BadgeIcon = b.icon;
@@ -146,7 +167,12 @@ export default function Specializations() {
                           className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10"
                         >
                           {BadgeIcon && (
-                            <BadgeIcon className="text-cyan-400 text-xs" />
+                            <BadgeIcon
+                              size={12}
+                              style={{
+                                fill: "url(#iconGradient)",
+                              }}
+                            />
                           )}
 
                           <span className="text-xs text-slate-200">
