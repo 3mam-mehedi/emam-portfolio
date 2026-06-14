@@ -28,7 +28,7 @@ export default function Home() {
     <>
       <Background />
 
-      <section className="min-h-screen flex items-center px-4 lg:px-12 pt-24 pb-8">
+      <section className="min-h-screen flex items-center px-4 lg:px-12 pt-8 lg:pt-24 pb-8">
         <div className="max-w-5xl mx-auto w-full">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-14">
 
