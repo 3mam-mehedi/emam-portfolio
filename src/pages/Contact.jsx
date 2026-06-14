@@ -85,7 +85,7 @@ export default function Contact() {
     <>
       <Background />
 
-      <section className="h-screen overflow-hidden px-4 lg:px-12 pt-20 md:pt-24 pb-8 flex items-start md:items-center">
+      <section className="h-screen overflow-hidden px-4 lg:px-12 pt-16 md:pt-24 pb-8 flex items-start md:items-center">
         <div className="max-w-5xl mx-auto w-full">
           {/* ================= HEADING ================= */}
           <motion.div
