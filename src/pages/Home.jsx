@@ -88,7 +88,7 @@ export default function Home() {
               className="flex justify-center"
             >
               <div
-                className="relative w-52 h-64 md:w-96 md:h-[500px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(9,104,229,0.35)]"
+                className="relative w-58 h-70 md:w-96 md:h-[500px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(9,104,229,0.35)]"
                 style={{
                   borderRadius: "38% 62% 63% 37% / 30% 30% 70% 70%",
                 }}
