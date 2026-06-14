@@ -98,7 +98,7 @@ export default function Contact() {
               Contact Me
             </h1>
 
-            <p className="text-slate-400 mb-10">
+            <p className="text-slate-400 mb-6 md:mb-10">
               Have a project or question? Let’s build something awesome.
             </p>
           </motion.div>
