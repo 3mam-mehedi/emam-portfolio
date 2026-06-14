@@ -110,14 +110,14 @@ export default function Contact() {
             initial="hidden"
             animate="show"
             transition={{ duration: 1 }}
-            className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:scale-[1.01] transition duration-300"
+            className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 md:p-8 hover:scale-[1.01] transition duration-300"
           >
             <div className="grid gap-5">
               {/* NAME */}
               <div>
                 <input
                   name="name"
-                  value={form.name}
+                  value={form.name}n
                   onChange={handleChange}
                   placeholder="Your name"
                   className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] transition"
