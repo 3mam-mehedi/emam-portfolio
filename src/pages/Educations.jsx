@@ -13,11 +13,16 @@ import {
   FaNodeJs,
   FaGitAlt,
   FaFigma,
+  FaTeamspeak,
 } from "react-icons/fa";
 
+import { SiGrammarly } from "react-icons/si";
 import { FaFlutter } from "react-icons/fa6";
-import { TbApi } from "react-icons/tb";
+import { TbApi,TbVocabulary } from "react-icons/tb";
 import { DiIllustrator } from "react-icons/di";
+import { GrAssistListening } from "react-icons/gr";
+import { RiSpeakAiFill } from "react-icons/ri";
+import { GiThink } from "react-icons/gi";
 
 import {
   SiCplusplus,
@@ -49,7 +54,8 @@ const educations = [
     period: "2016 - 2020",
     summary:
       "Focused on Web Development and Software Engineering with strong academic foundation.",
-    extra: "IoT-Based Smart Traffic Light System",
+    finalProject: "IoT-Based Smart Traffic Light System",
+    projectLink: "https://your-project-link.com",
     gpa: "2.50 / 4.00",
     img: "/assets/edu/habibullah.jpg",
   },
@@ -86,7 +92,7 @@ function EducationCard({ item, delay = 0 }) {
         <div className="flex items-center gap-4">
           <img
             src={item.img}
-            className="w-14 h-14 rounded-full object-cover border-2 border-cyan-400"
+            className="w-14 h-14 rounded-full object-cover border-2 border-[#305af0]"
           />
 
           <div>
@@ -97,9 +103,7 @@ function EducationCard({ item, delay = 0 }) {
           </div>
         </div>
 
-        <span className="text-sm text-white">
-          {item.period}
-        </span>
+        <span className="text-sm text-white">{item.period}</span>
       </div>
 
       <p className="text-slate-400 text-sm mb-4">{item.summary}</p>
@@ -108,6 +112,48 @@ function EducationCard({ item, delay = 0 }) {
         <span style={gradientText} className="text-sm font-semibold">
           CGPA: {item.gpa}
         </span>
+      )}
+
+      {item.finalProject && (
+        <div className="mt-4 rounded-xl border border-blue-500/20 p-4">
+          <p className="text-xs uppercase tracking-wider mb-1" style={gradientText}>
+            Final Year Project
+          </p>
+
+          <h3 className="text-white font-semibold">
+            {item.finalProject}
+          </h3>
+
+          {item.projectLink && (
+           <a
+  href={item.projectLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+    inline-flex
+    items-center
+    gap-2
+    mt-3
+    px-3
+    py-2
+    rounded-lg
+    border
+    border-[#0968E5]/30
+    bg-[#0968E5]/10
+    text-[#4ea1ff]
+    text-sm
+    font-medium
+    transition-all
+    duration-300
+    hover:bg-[#0968E5]/20
+    hover:border-[#0968E5]
+    hover:scale-105
+  "
+>
+  View Project →
+</a>
+          )}
+        </div>
       )}
 
       {item.extra && (
@@ -132,10 +178,7 @@ function SkillCard(props) {
     >
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         <div className="flex items-center gap-3">
-          <div
-            className="text-3xl"
-            style={{ color: "#0968E5" }}
-          >
+          <div className="text-3xl" style={{ color: "#0968E5" }}>
             <props.icon />
           </div>
 
@@ -148,7 +191,7 @@ function SkillCard(props) {
           {props.logo && (
             <img
               src={props.logo}
-              className="w-6 h-6 rounded-full bg-white p-1"
+              className="w-6 h-6 rounded-full object-cover bg-white p-0 scale-150 shadow-md border border-white/20"
               alt=""
             />
           )}
@@ -163,15 +206,29 @@ function SkillCard(props) {
         {props.items.map((it, i) => {
           const Ico = it.icon;
 
+          const customColors = {
+            HTML: "#e34a24",
+            CSS: "#2b57f8",
+            Bootstrap: "#6f2cf5",
+            PHP: "#777bb3",
+            MySQL: "#0a707f",
+            API: "#00c2ff",
+            Vocabulary: "#ff002e",
+            Grammar: "#13a700",
+            Listening: "#00bbf9",
+            Speaking: "#00f5d4",
+            Pronunciation: "#f15bb5",
+            Thinking: "#f8961e",
+          };
+
+          const iconColor = customColors[it.label] || "#0968E5";
+
           return (
             <div
               key={i}
               className="flex items-center gap-2 bg-white/10 p-2 rounded-lg"
             >
-              <div
-                className="text-lg"
-                style={{ color: "#0968E5" }}
-              >
+              <div className="text-xl" style={{ color: iconColor }}>
                 <Ico />
               </div>
 
@@ -182,44 +239,6 @@ function SkillCard(props) {
           );
         })}
       </div>
-    </motion.div>
-  );
-}
-
-/* ================= CIRCLE SECTION ================= */
-function Circle({ data, delay = 0 }) {
-  return (
-    <motion.div
-      variants={fadeLeft}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1, ease: "easeOut", delay }}
-      className="
-        w-full
-        md:w-44 md:h-44
-        grid grid-cols-4
-        md:flex md:flex-wrap
-        gap-2 justify-center items-center
-      "
-    >
-      {data.map((item, i) => (
-        <div
-          key={i}
-          className="
-            h-14 w-14
-            md:w-[40%] md:h-[40%]
-            flex items-center justify-center
-            bg-white/10 backdrop-blur-xl
-            border border-white/20
-            rounded-2xl
-          "
-        >
-          <div className="text-2xl md:text-3xl" style={{ color: item.color }}>
-            {item.icon}
-          </div>
-        </div>
-      ))}
     </motion.div>
   );
 }
@@ -239,7 +258,7 @@ export default function Education() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1 }}
             className="text-4xl font-bold mb-3 text-white"
           >
             Education
@@ -250,13 +269,11 @@ export default function Education() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
+            transition={{ duration: 1, delay: 0.1 }}
             className="text-slate-400 mb-8 max-w-3xl"
           >
             My learning path combines formal study with practical training used directly in product work.
           </motion.p>
-
-
 
           {/* EDUCATION */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
@@ -297,7 +314,7 @@ export default function Education() {
             <SkillCard
               icon={FaReact}
               title="ADVANCED E-COMMERCE"
-              logo="/assets/skills/spi.png"
+              logo="/assets/skills/soft.png"
               institute="Soft Park IT"
               year="2023"
               duration="3 Months"
@@ -319,12 +336,12 @@ export default function Education() {
               year="2022"
               duration="3 Months"
               items={[
-                { icon: FaFigma, label: "Vocabulary" },
-                { icon: FaFigma, label: "Grammar" },
-                { icon: FaFigma, label: "Listening" },
-                { icon: FaFigma, label: "Speaking" },
-                { icon: FaFigma, label: "Pronunciation" },
-                { icon: FaFigma, label: "Thinking" },
+                { icon: TbVocabulary, label: "Vocabulary" },
+                { icon: SiGrammarly, label: "Grammar" },
+                { icon: GrAssistListening, label: "Listening" },
+                { icon: FaTeamspeak, label: "Speaking" },
+                { icon: RiSpeakAiFill, label: "Pronunciation" },
+                { icon: GiThink, label: "Thinking" },
               ]}
             />
           </div>
@@ -338,17 +355,14 @@ export default function Education() {
                 { icon: <FaCss3Alt />, color: "#2b57f8" },
                 { icon: <FaBootstrap />, color: "#6f2cf5" },
                 { icon: <SiTailwindcss />, color: "#00bbff" },
-
                 { icon: <SiCplusplus />, color: "#1469be" },
                 { icon: <FaNodeJs />, color: "#65b849" },
                 { icon: <SiPhp />, color: "#797db5" },
                 { icon: <SiMysql />, color: "#0a707f" },
-
                 { icon: <FaReact />, color: "#00d9ff" },
                 { icon: <FaLaravel />, color: "#ff2919" },
                 { icon: <FaFlutter />, color: "#5ec9f7" },
                 { icon: <SiDart />, color: "#02599c" },
-
                 { icon: <SiArduino />, color: "#118693" },
                 { icon: <FaGitAlt />, color: "#f05232" },
                 { icon: <FaFigma />, color: "#8f4aff" },
@@ -361,17 +375,7 @@ export default function Education() {
                   whileInView="show"
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.03 }}
-                  className="
-  w-14 h-14
-  md:w-20 md:h-20
-  flex items-center justify-center
-  bg-white/10
-  backdrop-blur-xl
-  border border-white/20
-  rounded-2xl
-  hover:scale-110
-  transition
-"
+                  className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:scale-110 transition"
                 >
                   <div
                     className="text-2xl md:text-4xl"

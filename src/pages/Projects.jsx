@@ -87,8 +87,7 @@ export default function Projects() {
             </h1>
 
             <p className="text-slate-300 mb-10">
-              Selected projects demonstrating design quality,
-              technical work, and polished UI components.
+              Showcasing some of my best work, ranging from web applications to complex systems.
             </p>
           </motion.div>
 

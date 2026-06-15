@@ -14,6 +14,7 @@ import {
   SiTailwindcss,
   SiJavascript,
   SiAltiumdesigner,
+ SiGmail, 
 } from "react-icons/si";
 
 import { PiMicrosoftWordLogoFill } from "react-icons/pi";
@@ -24,18 +25,46 @@ import {
   MdAttachEmail,
 } from "react-icons/md";
 
+
+import { FaLaptopFile } from "react-icons/fa6";
+
+
 const experiences = [
   {
     company: "Landco Solar Company Ltd. Dhaka",
     role: "Project Report Writer",
     period: "On Site",
     skills: [
-      { icon: <PiMicrosoftWordLogoFill />, name: "MS Office" },
-      { icon: <FaFileExcel />, name: "Excel" },
-      { icon: <TbReportSearch />, name: "Research" },
-      { icon: <MdOutlineDataExploration />, name: "Data Analysis" },
-      { icon: <MdAttachEmail />, name: "Email" },
-      { icon: <SiAltiumdesigner />, name: "Report Design" },
+      {
+        icon: <PiMicrosoftWordLogoFill />,
+        name: "MS Office",
+        color: "#0765fe",
+      },
+      {
+        icon: <FaFileExcel />,
+        name: "Excel",
+        color: "#13a700",
+      },
+      {
+        icon: <TbReportSearch />,
+        name: "Research",
+        color: "#F4511E",
+      },
+      {
+        icon: <MdOutlineDataExploration />,
+        name: "Data Analysis",
+        color: "#D81B60",
+      },
+      {
+        icon: <SiGmail />,
+        name: "Email",
+        color: "#0fbb61",
+      },
+      {
+        icon: <SiAltiumdesigner />,
+        name: "Report Design",
+        color: "#E040FB",
+      },
     ],
   },
   {
@@ -43,10 +72,26 @@ const experiences = [
     role: "Frontend Developer",
     period: "Remote",
     skills: [
-      { icon: <FaReact />, name: "React" },
-      { icon: <SiTailwindcss />, name: "Tailwind" },
-      { icon: <SiJavascript />, name: "JavaScript" },
-      { icon: <FaHtml5 />, name: "Responsive UI" },
+      {
+        icon: <FaReact />,
+        name: "React",
+        color: "#61DAFB",
+      },
+      {
+        icon: <SiTailwindcss />,
+        name: "Tailwind",
+        color: "#06B6D4",
+      },
+      {
+        icon: <SiJavascript />,
+        name: "JavaScript",
+        color: "#F7DF1E",
+      },
+      {
+        icon: <FaLaptopFile />,
+        name: "Responsive UI",
+        color: "#F4511E",
+      },
     ],
   },
 ];
@@ -55,10 +100,6 @@ const gradientText = {
   background: "linear-gradient(90deg, #0968E5, #091970)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
-};
-
-const gradientBg = {
-  background: "linear-gradient(90deg, #0968E5, #091970)",
 };
 
 export default function Experiences() {
@@ -76,8 +117,8 @@ export default function Experiences() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <h1
-              className="text-4xl text-white font-bold mb-4"
-              
+              className="text-4xl font-bold mb-4"
+              style={gradientText}
             >
               Experiences
             </h1>
@@ -87,7 +128,7 @@ export default function Experiences() {
             </p>
           </motion.div>
 
-          {/* Cards */}
+          {/* Experience Cards */}
           <div className="grid gap-6 md:grid-cols-2">
             {experiences.map((item, idx) => (
               <motion.article
@@ -100,21 +141,30 @@ export default function Experiences() {
                   ease: "easeOut",
                   delay: idx * 0.15,
                 }}
-                className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm hover:scale-[1.02] transition duration-300"
+                className="
+                  w-full
+                  rounded-3xl
+                  border border-white/10
+                  bg-white/5
+                  p-6
+                  backdrop-blur-sm
+                  hover:scale-[1.02]
+                  hover:border-[#0968E5]/40
+                  transition-all
+                  duration-300
+                "
               >
                 <div className="flex items-center justify-between mb-4 gap-3">
                   <h2 className="text-xl font-semibold text-white">
                     {item.role}
                   </h2>
 
-                  <span
-                    className="text-sm uppercase tracking-[0.2em] text-white/70 whitespace-nowrap"
-                  >
+                  <span className="text-sm uppercase tracking-[0.2em] text-white/70 whitespace-nowrap">
                     {item.period}
                   </span>
                 </div>
 
-                <p className="text-slate-300 flex items-center gap-2 mb-4">
+                <p className="text-white flex items-center gap-2 mb-4">
                   <FaBuilding style={{ color: "#0968E5" }} />
                   {item.company}
                 </p>
@@ -123,13 +173,30 @@ export default function Experiences() {
                   {item.skills.map((skill, i) => (
                     <span
                       key={i}
-                      className="flex items-center gap-2 px-3 py-1 rounded-full
-                      bg-white/10 text-slate-200 text-sm border border-white/10
-                      hover:bg-white/15 transition"
+                      className="
+                        flex items-center gap-2
+                        px-3 py-1.5
+                        rounded-full
+                        bg-white/10
+                        text-white
+                        text-sm
+                        border border-white/10
+                        backdrop-blur-sm
+                        hover:bg-white/15
+                        hover:scale-105
+                        transition-all
+                        duration-300
+                      "
                     >
-                      <span style={{ color: "#0968E5" }}>
+                      <span
+                        style={{
+                          color: skill.color,
+                          fontSize: "18px",
+                        }}
+                      >
                         {skill.icon}
                       </span>
+
                       {skill.name}
                     </span>
                   ))}
@@ -137,6 +204,7 @@ export default function Experiences() {
               </motion.article>
             ))}
           </div>
+
         </div>
       </div>
     </>

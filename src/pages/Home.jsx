@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import {
   FaGithub,
   FaLinkedinIn,
-  FaInstagram,
 } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 
 import Background from "../components/Background";
 
@@ -47,17 +47,30 @@ export default function Home() {
               </h1>
 
               <p className="mt-3 md:mt-6 text-base sm:text-xl md:text-3xl text-[#cbd5e1]">
-                Frontend Developer.
+                Frontend Developer
               </p>
 
               {/* BUTTON */}
               <div className="mt-6 md:mt-10">
                 <a
-                  href="/cv.pdf"
+                  href="/assets/Emam Mehedi.cv.pdf"
                   download
-                  className="px-5 py-2.5 md:px-6 md:py-3 rounded-2xl text-white font-medium shadow-lg transition duration-300 hover:scale-105"
+                  className="
+                    px-5 py-2.5 md:px-6 md:py-3
+                    rounded-2xl
+                    text-white
+                    font-medium
+                    shadow-lg
+                    transition-all
+                    duration-500
+                    hover:scale-110
+                    hover:-translate-y-1
+                    hover:shadow-[0_0_35px_rgba(9,104,229,0.8)]
+                    active:scale-95
+                  "
                   style={{
-                    background: "linear-gradient(90deg, #0968E5, #091970)",
+                    background:
+                      "linear-gradient(90deg, #0968E5, #091970)",
                   }}
                 >
                   Download CV
@@ -66,17 +79,73 @@ export default function Home() {
 
               {/* SOCIALS */}
               <div className="flex items-center gap-4 md:gap-5 mt-6 md:mt-8">
-                <a className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:scale-110 transition text-white">
-                  <FaGithub />
+
+                {/* LINKEDIN */}
+                <a
+                  href="https://www.linkedin.com/in/emam-mehedi-s-e/"
+                  className="
+                    w-10 h-10 md:w-12 md:h-12
+                    flex items-center justify-center
+                    rounded-full
+                    border border-white/20
+                    bg-white/10
+                    backdrop-blur-xl
+                    shadow-lg
+                    transition-all duration-500
+                    hover:scale-125
+                    hover:-translate-y-2
+                    hover:bg-white/20
+                    hover:shadow-[0_0_25px_rgba(10,102,194,0.8)]
+                    text-[#0A66C2]
+                  "
+                >
+                  <FaLinkedinIn size={20} />
                 </a>
 
-                <a className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:scale-110 transition text-[#0A66C2]">
-                  <FaLinkedinIn />
+                {/* GITHUB */}
+                <a
+                  href="https://github.com/3mam-mehedi"
+                  className="
+                    w-10 h-10 md:w-12 md:h-12
+                    flex items-center justify-center
+                    rounded-full
+                    border border-white/20
+                    bg-white/10
+                    backdrop-blur-xl
+                    shadow-lg
+                    transition-all duration-500
+                    hover:scale-125
+                    hover:-translate-y-2
+                    hover:bg-white/20
+                    hover:shadow-[0_0_25px_rgba(255,255,255,0.7)]
+                    text-white
+                  "
+                >
+                  <FaGithub size={20} />
                 </a>
 
-                <a className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:scale-110 transition text-[#E4405F]">
-                  <FaInstagram />
+                {/* GMAIL */}
+                <a
+                  href="#"
+                  className="
+                    w-10 h-10 md:w-12 md:h-12
+                    flex items-center justify-center
+                    rounded-full
+                    border border-white/20
+                    bg-white/10
+                    backdrop-blur-xl
+                    shadow-lg
+                    transition-all duration-500
+                    hover:scale-125
+                    hover:-translate-y-2
+                    hover:bg-white/20
+                    hover:shadow-[0_0_25px_rgba(15,187,97,0.8)]
+                    text-[#0fbb61]
+                  "
+                >
+                  <SiGmail size={20} />
                 </a>
+
               </div>
             </motion.div>
 
@@ -88,9 +157,22 @@ export default function Home() {
               className="flex justify-center"
             >
               <div
-                className="relative w-58 h-70 md:w-96 md:h-[500px] overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_0_40px_rgba(9,104,229,0.35)]"
+                className="
+                  relative
+                  w-58 h-70
+                  md:w-96 md:h-[500px]
+                  overflow-hidden
+                  bg-white/5
+                  border border-white/10
+                  backdrop-blur-md
+                  shadow-[0_0_40px_rgba(9,104,229,0.35)]
+                  transition-all duration-700
+                  hover:scale-105
+                  hover:shadow-[0_0_60px_rgba(9,104,229,0.6)]
+                "
                 style={{
-                  borderRadius: "38% 62% 63% 37% / 30% 30% 70% 70%",
+                  borderRadius:
+                    "38% 62% 63% 37% / 30% 30% 70% 70%",
                 }}
               >
                 <img
