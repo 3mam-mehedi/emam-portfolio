@@ -10,10 +10,18 @@ import {
   FaMobileAlt,
   FaFigma,
   FaLayerGroup,
+  FaHtml5,
+  FaCss3,
+
 } from "react-icons/fa";
-
-import { SiTailwindcss } from "react-icons/si";
-
+import { TbApi ,TbFileSettingsFilled ,TbNavigationStar } from "react-icons/tb";
+import { GiProgression ,GiCircuitry ,GiWireframeGlobe } from "react-icons/gi";
+import { BsCpu, BsJavascript ,BsCCircleFill} from "react-icons/bs";
+import { MdOutlinePhoneIphone,MdOutlineScreenSearchDesktop } from "react-icons/md";
+import { SiTailwindcss,SiArduino ,SiDart  } from "react-icons/si";
+import { BiSolidWidget } from "react-icons/bi";
+import { SiAltiumdesigner ,SiFirebase } from "react-icons/si";
+import { FaLaptopFile } from "react-icons/fa6";
 const fadeUp = {
   hidden: {
     opacity: 0,
@@ -28,46 +36,58 @@ const fadeUp = {
 const specializations = [
   {
     title: "Frontend Developer",
+    progress: 95,
     description:
-      "Building scalable UI with reusable components and modern React architecture.",
+      "Builds the user-facing part of websites and web applications.",
     icon: FaReact,
     badges: [
-      { label: "Frontend", icon: FaCode, color: "#61DAFB" },
-      { label: "Hooks", icon: FaLayerGroup, color: "#A855F7" },
-      { label: "SPA", icon: FaMobileAlt, color: "#22C55E" },
+      { label: "HTML", icon: FaHtml5, color: "#61DAFB" },
+      { label: "CSS", icon: FaCss3, color: "#A855F7" },
+      { label: "Tailwind CSS", icon: SiTailwindcss, color: "#22C55E" },
+      { label: "JavaScript", icon: BsJavascript, color: "#22C55E" },
+      { label: "React.js", icon: FaReact, color: "#22C55E" },
+      { label: "API Integration", icon: TbApi, color: "#22C55E" },
     ],
   },
   {
-    title: "Embedded Systems",
+    title: "Embedded Systems Engineer",
+    progress: 80,
     description:
-      "Creating responsive layouts using modern utility-first CSS approach.",
-    icon: SiTailwindcss,
+      "Develops software and hardware for embedded devices and smart systems.",
+    icon: BsCpu,
     badges: [
-      { label: "Responsive", icon: FaMobileAlt, color: "#F59E0B" },
-      { label: "UI Design", icon: FaFigma, color: "#F24E1E" },
-      { label: "Utility CSS", icon: FaCode, color: "#38BDF8" },
+      { label: "C Programming", icon: BsCCircleFill, color: "#F59E0B" },
+      { label: "Arduino", icon: SiArduino, color: "#F24E1E" },
+      { label: "Microcontrollers", icon: BsCpu, color: "#38BDF8" },
+      { label: "PCB Design", icon: GiCircuitry, color: "#38BDF8" },
     ],
   },
   {
     title: "UI / UX Design",
+    progress: 75,
     description:
-      "Designing smooth user experiences with modern and clean interfaces.",
+      "Designs intuitive and visually appealing user experiences and interfaces.",
     icon: FaFigma,
     badges: [
       { label: "Figma", icon: FaFigma, color: "#F24E1E" },
-      { label: "Wireframe", icon: FaLayerGroup, color: "#8B5CF6" },
-      { label: "User Flow", icon: FaCode, color: "#10B981" },
+      { label: "Wireframe", icon: GiWireframeGlobe, color: "#8B5CF6" },
+      { label: "UX Research", icon: MdOutlineScreenSearchDesktop, color: "#10B981" },
+      { label: "Prototyping", icon: TbFileSettingsFilled, color: "#10B981" },
+      { label: "Responsive Design", icon: FaLaptopFile, color: "#10B981" },
     ],
   },
   {
     title: "Mobile App Developer",
-    description:
-      "Modern frontend development with performance and scalability.",
-    icon: FaReact,
+    progress: 75,
+    description: "Creates applications for Android and iOS devices.",
+    icon: MdOutlinePhoneIphone,
     badges: [
-      { label: "React", icon: FaReact, color: "#61DAFB" },
-      { label: "Optimization", icon: FaCode, color: "#F97316" },
-      { label: "Architecture", icon: FaLayerGroup, color: "#6366F1" },
+      { label: "Dart", icon: SiDart, color: "#61DAFB" },
+      { label: "Flutter Widgets", icon: BiSolidWidget, color: "#F97316" },
+      { label: "UI Design", icon: SiAltiumdesigner, color: "#6366F1" },
+      { label: "Navigation", icon: TbNavigationStar, color: "#6366F1" },
+      { label: "Firebase", icon: SiFirebase, color: "#6366F1" },
+      { label: "API Integration", icon: TbApi, color: "#6366F1" },
     ],
   },
 ];
@@ -182,6 +202,37 @@ export default function Specializations() {
                         </div>
                       );
                     })}
+                  </div>
+
+                  <div className="mt-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm text-slate-300">
+                        <GiProgression />
+                      </span>
+
+                      <span className="text-sm font-semibold text-white">
+                        {item.progress}%
+                      </span>
+                    </div>
+
+                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{
+                          width: item.progress + "%",
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 1.2,
+                          delay: index * 0.15,
+                        }}
+                        className="h-full rounded-full"
+                        style={{
+                          background:
+                            "linear-gradient(90deg, #0968E5 0%, #091970 100%)",
+                        }}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               );

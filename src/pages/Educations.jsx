@@ -15,13 +15,13 @@ import {
   FaFigma,
   FaTeamspeak,
 } from "react-icons/fa";
-
+import { MdShoppingCartCheckout } from "react-icons/md";
 import { SiGrammarly } from "react-icons/si";
 import { FaFlutter } from "react-icons/fa6";
 import { TbApi,TbVocabulary } from "react-icons/tb";
 import { DiIllustrator } from "react-icons/di";
 import { GrAssistListening } from "react-icons/gr";
-import { RiSpeakAiFill } from "react-icons/ri";
+import { RiSpeakAiFill , RiEnglishInput } from "react-icons/ri";
 import { GiThink } from "react-icons/gi";
 
 import {
@@ -312,7 +312,7 @@ export default function Education() {
             </div>
 
             <SkillCard
-              icon={FaReact}
+              icon={MdShoppingCartCheckout}
               title="ADVANCED E-COMMERCE"
               logo="/assets/skills/soft.png"
               institute="Soft Park IT"
@@ -329,7 +329,7 @@ export default function Education() {
             />
 
             <SkillCard
-              icon={FaFigma}
+              icon={RiEnglishInput}
               title="SPOKEN ENGLISH"
               logo="/assets/skills/saifurs.png"
               institute="Saifurs"

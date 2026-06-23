@@ -47,7 +47,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-3 md:mt-6 text-base sm:text-xl md:text-3xl text-[#cbd5e1]">
-                Frontend Developer
+                Cross-Platform Engineer
               </p>
 
               {/* BUTTON */}

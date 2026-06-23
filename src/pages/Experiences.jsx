@@ -117,8 +117,8 @@ export default function Experiences() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <h1
-              className="text-4xl font-bold mb-4"
-              style={gradientText}
+              className="text-4xl text-white font-bold mb-4"
+              
             >
               Experiences
             </h1>
