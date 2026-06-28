@@ -16,22 +16,15 @@ import {
   FaTeamspeak,
 } from "react-icons/fa";
 import { MdShoppingCartCheckout } from "react-icons/md";
-import { SiGrammarly } from "react-icons/si";
+import { SiGrammarly, SiFirebase, SiNotepadplusplus, SiCplusplus, SiTailwindcss, SiPhp, SiMysql, SiDart, SiArduino } from "react-icons/si";
 import { FaFlutter } from "react-icons/fa6";
-import { TbApi,TbVocabulary } from "react-icons/tb";
+import { TbApi, TbVocabulary } from "react-icons/tb";
 import { DiIllustrator } from "react-icons/di";
 import { GrAssistListening } from "react-icons/gr";
-import { RiSpeakAiFill , RiEnglishInput } from "react-icons/ri";
+import { RiSpeakAiFill, RiEnglishInput } from "react-icons/ri";
 import { GiThink } from "react-icons/gi";
+import { BsCpu } from "react-icons/bs";
 
-import {
-  SiCplusplus,
-  SiTailwindcss,
-  SiPhp,
-  SiMysql,
-  SiDart,
-  SiArduino,
-} from "react-icons/si";
 
 /* ================= GRADIENT ================= */
 const gradientText = {
@@ -125,11 +118,11 @@ function EducationCard({ item, delay = 0 }) {
           </h3>
 
           {item.projectLink && (
-           <a
-  href={item.projectLink}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
+            <a
+              href={item.projectLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
     inline-flex
     items-center
     gap-2
@@ -149,9 +142,9 @@ function EducationCard({ item, delay = 0 }) {
     hover:border-[#0968E5]
     hover:scale-105
   "
->
-  View Project →
-</a>
+            >
+              View Project →
+            </a>
           )}
         </div>
       )}
@@ -363,10 +356,16 @@ export default function Education() {
                 { icon: <FaLaravel />, color: "#ff2919" },
                 { icon: <FaFlutter />, color: "#5ec9f7" },
                 { icon: <SiDart />, color: "#02599c" },
+                { icon: <SiFirebase />, color: "#dd2c00" },
+                { icon: <TbApi />, color: "#00c2ff" },
                 { icon: <SiArduino />, color: "#118693" },
                 { icon: <FaGitAlt />, color: "#f05232" },
+                { icon: <SiNotepadplusplus />, color: "#00c2ff" },
+                { icon: <BsCpu />, color: "#01c59a" },
                 { icon: <FaFigma />, color: "#8f4aff" },
                 { icon: <DiIllustrator />, color: "#ff7b1c" },
+
+
               ].map((item, i) => (
                 <motion.div
                   key={i}

@@ -2,8 +2,16 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaReact } from "react-icons/fa";
-import { SiTailwindcss, SiStripe, SiSocketdotio } from "react-icons/si";
+import {
+  FaReact,
+  FaJs,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiSocketdotio,
+  SiFirebase,
+} from "react-icons/si";
 import { IoLogoNodejs } from "react-icons/io";
 
 import Background from "../components/Background";
@@ -15,55 +23,58 @@ const fadeLeft = {
 
 const projects = [
   {
-    name: "Productive CRM",
-    type: "Business Dashboard",
-    image: "/assets/projects/Kitsware.png",
-    details:
-      "React + Node.js business dashboard system with scalable architecture.",
-    icon: FaReact,
-    badges: [
-      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
-      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
-      { name: "Node.js", icon: IoLogoNodejs, color: "text-[#68A063]" },
-    ],
-  },
-  {
-    name: "E-commerce Store",
-    type: "Product Launch",
-    image: "/assets/projects/tree.jpg",
-    details:
-      "Fullstack store with stripe payment and modern UI/UX system.",
-    icon: SiTailwindcss,
-    badges: [
-      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
-      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
-      { name: "Stripe", icon: SiStripe, color: "text-[#635BFF]" },
-    ],
-  },
-  {
-    name: "Realtime Chat",
-    type: "Communication App",
-    image: "/assets/projects/car.png",
-    details:
-      "Socket.io realtime chat application with live messaging.",
-    icon: IoLogoNodejs,
-    badges: [
-      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
-      { name: "Socket.io", icon: SiSocketdotio, color: "text-white" },
-      { name: "Node.js", icon: IoLogoNodejs, color: "text-[#68A063]" },
-    ],
-  },
-  {
-    name: "Portfolio Website",
-    type: "Personal Branding",
+    name: "Traffic Light System",
+    type: "Final Year Project",
     image: "/assets/projects/iot.png",
     details:
-      "Modern animated portfolio showcasing skills, work, and contact system.",
-    icon: FaReact,
+      "React + Node.js business dashboard system with scalable architecture.",
+    live: "https://your-live-link.com",
     badges: [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
-      { name: "CSS", icon: SiTailwindcss, color: "text-[#264DE4]" },
+      { name: "Node.js", icon: IoLogoNodejs, color: "text-[#68A063]" },
+    ],
+  },
+  {
+    name: "Kitsware Technology",
+    type: "Technology Company",
+    image: "/assets/projects/kt.png",
+    details:
+      "Tech company specializing in Flutter, Artificial Intelligence, IoT, and Embedded Systems.",
+    live: "https://kitsware.vercel.app",
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
+      { name: "Firebase", icon: SiFirebase, color: "text-[#dd2c00]" },
+    ],
+  },
+  {
+    name: "TecTira",
+    type: "Communication App",
+    image: "/assets/projects/e-commerce.png",
+    details:
+      "Socket.io realtime chat application with live messaging.",
+    live: "https://your-live-link.com",
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
+      { name: "Firebase", icon: SiFirebase, color: "text-[#dd2c00]" },
+    ],
+  },
+  {
+    name: "E-commerce",
+    type: "Personal Branding",
+    image: "/assets/projects/e-commerce.png",
+    details:
+      "Modern animated portfolio showcasing skills, work, and contact system.",
+    live: "https://your-live-link.com",
+    badges: [
+     { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
+      { name: "Firebase", icon: SiFirebase, color: "text-[#dd2c00]" },
     ],
   },
 ];
@@ -95,74 +106,84 @@ export default function Projects() {
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {projects.map((project, idx) => {
-              const Icon = project.icon;
-
-              return (
-                <motion.article
-                  key={project.name}
-                  variants={fadeLeft}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    delay: idx * 0.15,
-                  }}
-                  className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-6 hover:scale-[1.02] transition duration-300"
-                >
-                  {/* Responsive Header */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4">
-                    {/* Image */}
+            {projects.map((project, idx) => (
+              <motion.article
+                key={project.name}
+                variants={fadeLeft}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: idx * 0.15,
+                }}
+                className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 sm:p-6 hover:scale-[1.02] hover:border-[#0968E5]/30 transition-all duration-300"
+              >
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row gap-5 mb-5">
+                  {/* Image */}
+                  <div className="w-full sm:w-52 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="order-first sm:order-none w-full sm:w-52 h-48 sm:h-28 rounded-xl object-cover border border-white/10 flex-shrink-0"
+                      className="w-full h-auto max-h-56 sm:w-52 sm:h-28 rounded-xl object-cover border border-white/10 flex-shrink-0"
                     />
+                  </div>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0 w-full">
-                      <div className="flex items-center gap-3 mb-1">
-                        <Icon className="text-2xl text-[#0968E5] flex-shrink-0" />
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg sm:text-xl font-semibold text-white mb-1 break-words">
+                      {project.name}
+                    </h2>
 
-                        <h2 className="text-lg sm:text-xl font-semibold text-white break-words">
-                          {project.name}
-                        </h2>
-                      </div>
+                    <p className={`text-sm font-medium ${gradientText}`}>
+                      {project.type}
+                    </p>
+                  </div>
+                </div>
 
-                      <p
-                        className={`text-sm font-medium sm:ml-9 ${gradientText}`}
+                {/* Description */}
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-5">
+                  {project.details}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2">
+                  {project.badges.map((badge, i) => {
+                    const Icon = badge.icon;
+
+                    return (
+                      <span
+                        key={i}
+                        className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-slate-200"
                       >
-                        {project.type}
-                      </p>
-                    </div>
-                  </div>
+                        <Icon className={`${badge.color} text-sm`} />
+                        {badge.name}
+                      </span>
+                    );
+                  })}
+                </div>
 
-                  <p className="text-slate-400 mb-5 text-sm sm:text-base leading-relaxed">
-                    {project.details}
-                  </p>
+                {/* Footer */}
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-xs uppercase tracking-[0.2em] text-slate-500">
+                    Live Website
+                  </span>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.badges.map((badge, i) => {
-                      const BadgeIcon = badge.icon;
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-sm font-medium text-white transition hover:text-[#4DA3FF]"
+                  >
+                    Visit Project
 
-                      return (
-                        <span
-                          key={i}
-                          className="px-3 py-1.5 text-xs rounded-lg bg-white/10 border border-white/10 text-slate-200 flex items-center gap-2"
-                        >
-                          <BadgeIcon
-                            className={`${badge.color} text-sm`}
-                          />
-                          {badge.name}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </motion.article>
-              );
-            })}
+                    <FaExternalLinkAlt className="text-xs transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </a>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </div>

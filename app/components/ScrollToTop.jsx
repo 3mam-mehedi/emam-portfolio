@@ -1,31 +1,21 @@
-"use client"
-
-import { usePathname } from "next/navigation"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 
 /**
  * ScrollToTop
- * - Client component that scrolls window to top on pathname changes
- * - Usage: include once in your root layout (app/layout.jsx)
+ * Scrolls the page to the top whenever the current route changes.
  */
 export default function ScrollToTop({ behavior = "auto" }) {
-  const pathname = usePathname()
-  const prev = useRef(pathname)
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    // Only run in the browser and when the pathname actually changes
     if (typeof window === "undefined") return
-    if (prev.current === pathname) return
 
-    // scroll to top (preserves production-safety and is smoothable)
     try {
       window.scrollTo({ top: 0, left: 0, behavior })
-    } catch (e) {
-      // fallback for environments where options are restricted
+    } catch {
       window.scrollTo(0, 0)
     }
-
-    prev.current = pathname
   }, [pathname, behavior])
 
   return null

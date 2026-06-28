@@ -6,10 +6,12 @@ import Educations from './pages/Educations'
 import Specializations from './pages/Specializations'
 import Projects from './pages/Projects'
 import Navbar from './components/Navbar'
+import ScrollToTop from '../app/components/ScrollToTop'
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
 
       <main className="container mx-auto">

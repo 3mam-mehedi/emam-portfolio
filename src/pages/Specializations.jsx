@@ -18,9 +18,8 @@ import { TbApi ,TbFileSettingsFilled ,TbNavigationStar } from "react-icons/tb";
 import { GiProgression ,GiCircuitry ,GiWireframeGlobe } from "react-icons/gi";
 import { BsCpu, BsJavascript ,BsCCircleFill} from "react-icons/bs";
 import { MdOutlinePhoneIphone,MdOutlineScreenSearchDesktop } from "react-icons/md";
-import { SiTailwindcss,SiArduino ,SiDart  } from "react-icons/si";
+import { SiTailwindcss,SiArduino ,SiDart ,SiCplusplus ,SiAltiumdesigner ,SiFirebase } from "react-icons/si";
 import { BiSolidWidget } from "react-icons/bi";
-import { SiAltiumdesigner ,SiFirebase } from "react-icons/si";
 import { FaLaptopFile } from "react-icons/fa6";
 const fadeUp = {
   hidden: {
@@ -41,39 +40,39 @@ const specializations = [
       "Builds the user-facing part of websites and web applications.",
     icon: FaReact,
     badges: [
-      { label: "HTML", icon: FaHtml5, color: "#61DAFB" },
-      { label: "CSS", icon: FaCss3, color: "#A855F7" },
-      { label: "Tailwind CSS", icon: SiTailwindcss, color: "#22C55E" },
-      { label: "JavaScript", icon: BsJavascript, color: "#22C55E" },
-      { label: "React.js", icon: FaReact, color: "#22C55E" },
-      { label: "API Integration", icon: TbApi, color: "#22C55E" },
+      { label: "HTML", icon: FaHtml5, color: "#e44d26" },
+      { label: "CSS", icon: FaCss3, color: "#264de4" },
+      { label: "Tailwind CSS", icon: SiTailwindcss, color: "#36b7f0" },
+      { label: "JavaScript", icon: BsJavascript, color: "#efd81d" },
+      { label: "React.js", icon: FaReact, color: "#61DAFB" },
+      { label: "Firebase", icon: SiFirebase, color: "#dd2c00" },
     ],
   },
   {
     title: "Embedded Systems Engineer",
-    progress: 80,
+    progress: 90,
     description:
       "Develops software and hardware for embedded devices and smart systems.",
     icon: BsCpu,
     badges: [
-      { label: "C Programming", icon: BsCCircleFill, color: "#F59E0B" },
-      { label: "Arduino", icon: SiArduino, color: "#F24E1E" },
-      { label: "Microcontrollers", icon: BsCpu, color: "#38BDF8" },
+      { label: "C++", icon: SiCplusplus, color: "#0281d0" },
+      { label: "Arduino", icon: SiArduino, color: "#00707d" },
+      { label: "Microcontrollers", icon: BsCpu, color: "#01c59a" },
       { label: "PCB Design", icon: GiCircuitry, color: "#38BDF8" },
     ],
   },
   {
     title: "UI / UX Design",
-    progress: 75,
+    progress: 80,
     description:
       "Designs intuitive and visually appealing user experiences and interfaces.",
     icon: FaFigma,
     badges: [
-      { label: "Figma", icon: FaFigma, color: "#F24E1E" },
-      { label: "Wireframe", icon: GiWireframeGlobe, color: "#8B5CF6" },
-      { label: "UX Research", icon: MdOutlineScreenSearchDesktop, color: "#10B981" },
-      { label: "Prototyping", icon: TbFileSettingsFilled, color: "#10B981" },
-      { label: "Responsive Design", icon: FaLaptopFile, color: "#10B981" },
+      { label: "Figma", icon: FaFigma, color: "#904cff" },
+      { label: "Wireframe", icon: GiWireframeGlobe, color: "#264de4" },
+      { label: "UX Research", icon: MdOutlineScreenSearchDesktop, color: "#e44d26" },
+      { label: "Prototyping", icon: TbFileSettingsFilled, color: "#01c59a" },
+      { label: "Responsive Design", icon: FaLaptopFile, color: "#dd2c00" },
     ],
   },
   {
@@ -84,10 +83,10 @@ const specializations = [
     badges: [
       { label: "Dart", icon: SiDart, color: "#61DAFB" },
       { label: "Flutter Widgets", icon: BiSolidWidget, color: "#F97316" },
-      { label: "UI Design", icon: SiAltiumdesigner, color: "#6366F1" },
+      { label: "UI Design", icon: SiAltiumdesigner, color: "#264de4" },
       { label: "Navigation", icon: TbNavigationStar, color: "#6366F1" },
-      { label: "Firebase", icon: SiFirebase, color: "#6366F1" },
-      { label: "API Integration", icon: TbApi, color: "#6366F1" },
+      { label: "Firebase", icon: SiFirebase, color: "#dd2c00" },
+      { label: "API Integration", icon: TbApi, color: "#00707d" },
     ],
   },
 ];
