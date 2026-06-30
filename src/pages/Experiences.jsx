@@ -14,7 +14,7 @@ import {
   SiTailwindcss,
   SiJavascript,
   SiAltiumdesigner,
- SiGmail, 
+  SiGmail,
 } from "react-icons/si";
 
 import { PiMicrosoftWordLogoFill } from "react-icons/pi";
@@ -117,13 +117,13 @@ export default function Experiences() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <h1
-              className="text-4xl text-white font-bold mb-4"
-              
+              className="text-4xl text-black font-bold mb-4 dark:text-white"
+
             >
               Experiences
             </h1>
 
-            <p className="text-slate-300 mb-8">
+            <p className="text-black/80 mb-8 dark:text-slate-300">
               Professional journey across development, reporting and UI work.
             </p>
           </motion.div>
@@ -144,28 +144,31 @@ export default function Experiences() {
                 className="
                   w-full
                   rounded-3xl
-                  border border-white/10
-                  bg-white/5
+                  border border-[#0968E5]/35
+                  bg-white/80
                   p-6
-                  backdrop-blur-sm
+                  shadow-[0_10px_35px_rgba(15,23,42,0.06)]
                   hover:scale-[1.02]
                   hover:border-[#0968E5]/40
                   transition-all
                   duration-300
+                  dark:border-white/10
+                  dark:bg-white/5
+                  dark:shadow-none
                 "
               >
                 <div className="flex items-center justify-between mb-4 gap-3">
-                  <h2 className="text-xl font-semibold text-white">
+                  <h2 className="text-xl font-semibold text-black dark:text-white">
                     {item.role}
                   </h2>
 
-                  <span className="text-sm uppercase tracking-[0.2em] text-white/70 whitespace-nowrap">
+                  <span className="text-sm uppercase tracking-[0.2em] text-slate-500 whitespace-nowrap dark:text-white/40">
                     {item.period}
                   </span>
                 </div>
 
-                <p className="text-white flex items-center gap-2 mb-4">
-                  <FaBuilding style={{ color: "#0968E5" }} />
+                <p className="text-black/85 flex items-center gap-2 mb-4 dark:text-white">
+                  <FaBuilding style={{ color: "#b6b7ba" }} />
                   {item.company}
                 </p>
 
@@ -177,12 +180,15 @@ export default function Experiences() {
                         flex items-center gap-2
                         px-3 py-1.5
                         rounded-full
-                        bg-white/10
-                        text-white
+                        bg-slate-100/90
+                        text-slate-700
                         text-sm
-                        border border-white/10
-                        backdrop-blur-sm
-                        hover:bg-white/15
+                        border border-[#0968E5]/35
+                        hover:bg-slate-200/80
+                        dark:bg-white/5
+                        dark:text-white
+                        dark:border-white/5
+                        dark:hover:bg-white/5
                         hover:scale-105
                         transition-all
                         duration-300

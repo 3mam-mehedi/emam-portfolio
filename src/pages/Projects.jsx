@@ -95,11 +95,11 @@ export default function Projects() {
             animate="show"
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h1 className="text-4xl font-bold mb-3 text-white">
+            <h1 className="text-4xl font-bold mb-3 text-black dark:text-white">
               Projects
             </h1>
 
-            <p className="text-slate-300 mb-10">
+            <p className="text-black/80 mb-10 dark:text-slate-300">
               Showcasing some of my best work, ranging from web applications to
               complex systems.
             </p>
@@ -118,22 +118,22 @@ export default function Projects() {
                   ease: "easeOut",
                   delay: idx * 0.15,
                 }}
-                className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm p-4 sm:p-6 hover:scale-[1.02] hover:border-[#0968E5]/30 transition-all duration-300"
+                className="rounded-3xl border border-[#0968E5]/35 bg-white/80 p-4 shadow-[0_10px_35px_rgba(15,23,42,0.06)] sm:p-6 hover:scale-[1.02] hover:border-[#0968E5]/30 transition-all duration-300 dark:border-white/10 dark:bg-white/5 dark:shadow-none"
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row gap-5 mb-5">
                   {/* Image */}
-                  <div className="w-full sm:w-52 flex-shrink-0 overflow-hidden rounded-xl border border-white/10">
+                  <div className="w-full sm:w-52 shrink-0 overflow-hidden rounded-xl border border-[#0968E5]/35 dark:border-white/10">
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-auto max-h-56 sm:w-52 sm:h-28 rounded-xl object-cover border border-white/10 flex-shrink-0"
+                      className="w-full h-auto max-h-56 sm:w-52 sm:h-28 rounded-xl object-cover border border-[#0968E5]/35 shrink-0 dark:border-white/10"
                     />
                   </div>
 
                   {/* Content */}
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-lg sm:text-xl font-semibold text-white mb-1 break-words">
+                    <h2 className="text-lg sm:text-xl font-semibold text-black mb-1 wrap-break-word dark:text-white">
                       {project.name}
                     </h2>
 
@@ -144,7 +144,7 @@ export default function Projects() {
                 </div>
 
                 {/* Description */}
-                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-5">
+                <p className="text-black/80 text-sm sm:text-base leading-relaxed mb-5 dark:text-slate-400">
                   {project.details}
                 </p>
 
@@ -156,7 +156,7 @@ export default function Projects() {
                     return (
                       <span
                         key={i}
-                        className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-slate-200"
+                        className="flex items-center gap-2 rounded-lg border border-[#0968E5]/35 bg-slate-100/90 px-3 py-1.5 text-xs text-black/80 dark:border-white/10 dark:bg-white/10 dark:text-slate-200"
                       >
                         <Icon className={`${badge.color} text-sm`} />
                         {badge.name}
@@ -166,8 +166,8 @@ export default function Projects() {
                 </div>
 
                 {/* Footer */}
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-[0.2em] text-slate-500">
+                <div className="mt-6 pt-4 border-t border-[#0968E5]/35 flex items-center justify-between dark:border-white/10">
+                  <span className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
                     Live Website
                   </span>
 
@@ -175,7 +175,7 @@ export default function Projects() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 text-sm font-medium text-white transition hover:text-[#4DA3FF]"
+                    className="group inline-flex items-center gap-2 text-sm font-medium text-black transition hover:text-[#4DA3FF] dark:text-white"
                   >
                     Visit Project
 

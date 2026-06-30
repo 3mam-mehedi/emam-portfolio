@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-zinc-950 dark:text-slate-100">
         {children}
         <ScrollToTop />
       </body>

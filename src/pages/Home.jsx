@@ -46,7 +46,7 @@ export default function Home() {
                 Emam Mehedi
               </h1>
 
-              <p className="mt-3 md:mt-6 text-base sm:text-xl md:text-3xl text-[#cbd5e1]">
+              <p className="mt-3 md:mt-6 text-base sm:text-xl md:text-3xl text-black/80 dark:text-slate-300">
                 Cross-Platform Engineer
               </p>
 
@@ -87,16 +87,19 @@ export default function Home() {
                     w-10 h-10 md:w-12 md:h-12
                     flex items-center justify-center
                     rounded-full
-                    border border-white/20
-                    bg-white/10
+                    border border-slate-300/70
+                    bg-white/75
                     backdrop-blur-xl
                     shadow-lg
                     transition-all duration-500
                     hover:scale-125
                     hover:-translate-y-2
-                    hover:bg-white/20
+                    hover:bg-white
                     hover:shadow-[0_0_25px_rgba(10,102,194,0.8)]
                     text-[#0A66C2]
+                    dark:border-white/20
+                    dark:bg-white/10
+                    dark:hover:bg-white/20
                   "
                 >
                   <FaLinkedinIn size={20} />
@@ -109,16 +112,21 @@ export default function Home() {
                     w-10 h-10 md:w-12 md:h-12
                     flex items-center justify-center
                     rounded-full
-                    border border-white/20
-                    bg-white/10
+                    border border-slate-300/70
+                    bg-white/75
                     backdrop-blur-xl
                     shadow-lg
                     transition-all duration-500
                     hover:scale-125
                     hover:-translate-y-2
-                    hover:bg-white/20
-                    hover:shadow-[0_0_25px_rgba(255,255,255,0.7)]
-                    text-white
+                    hover:bg-white
+                    hover:shadow-[0_0_25px_rgba(15,23,42,0.18)]
+                    text-slate-800
+                    dark:border-white/20
+                    dark:bg-white/10
+                    dark:hover:bg-white/20
+                    dark:text-white
+                    dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.7)]
                   "
                 >
                   <FaGithub size={20} />
@@ -131,16 +139,19 @@ export default function Home() {
                     w-10 h-10 md:w-12 md:h-12
                     flex items-center justify-center
                     rounded-full
-                    border border-white/20
-                    bg-white/10
+                    border border-slate-300/70
+                    bg-white/75
                     backdrop-blur-xl
                     shadow-lg
                     transition-all duration-500
                     hover:scale-125
                     hover:-translate-y-2
-                    hover:bg-white/20
+                    hover:bg-white
                     hover:shadow-[0_0_25px_rgba(15,187,97,0.8)]
                     text-[#0fbb61]
+                    dark:border-white/20
+                    dark:bg-white/10
+                    dark:hover:bg-white/20
                   "
                 >
                   <SiGmail size={20} />
@@ -162,13 +173,17 @@ export default function Home() {
                   w-58 h-70
                   md:w-96 md:h-[500px]
                   overflow-hidden
-                  bg-white/5
-                  border border-white/10
+                  bg-white/80
+                  border border-[#0968E5]/35
                   backdrop-blur-md
-                  shadow-[0_0_40px_rgba(9,104,229,0.35)]
+                  shadow-[0_0_40px_rgba(9,104,229,0.16)]
                   transition-all duration-700
                   hover:scale-105
-                  hover:shadow-[0_0_60px_rgba(9,104,229,0.6)]
+                  hover:shadow-[0_0_60px_rgba(9,104,229,0.24)]
+                  dark:bg-white/5
+                  dark:border-white/10
+                  dark:shadow-[0_0_40px_rgba(9,104,229,0.35)]
+                  dark:hover:shadow-[0_0_60px_rgba(9,104,229,0.6)]
                 "
                 style={{
                   borderRadius:

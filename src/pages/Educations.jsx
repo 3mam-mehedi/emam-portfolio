@@ -79,7 +79,7 @@ function EducationCard({ item, delay = 0 }) {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: "easeOut", delay }}
-      className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm hover:scale-[1.02] transition"
+      className="w-full rounded-3xl border border-[#0968E5]/35 bg-white/80 p-6 shadow-[0_10px_35px_rgba(15,23,42,0.06)] hover:scale-[1.02] transition dark:border-white/5 dark:bg-white/5 dark:shadow-none"
     >
       <div className="flex items-center justify-between gap-4 mb-4">
         <div className="flex items-center gap-4">
@@ -89,17 +89,17 @@ function EducationCard({ item, delay = 0 }) {
           />
 
           <div>
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold text-black dark:text-white">
               {item.degree}
             </h2>
-            <p className="text-slate-300 text-sm">{item.institution}</p>
+            <p className="text-black/80 text-sm dark:text-slate-300">{item.institution}</p>
           </div>
         </div>
 
-        <span className="text-sm text-white">{item.period}</span>
+        <span className="text-sm text-black/80 dark:text-white">{item.period}</span>
       </div>
 
-      <p className="text-slate-400 text-sm mb-4">{item.summary}</p>
+      <p className="text-black/80 text-sm mb-4 dark:text-slate-400">{item.summary}</p>
 
       {item.gpa && (
         <span style={gradientText} className="text-sm font-semibold">
@@ -108,12 +108,12 @@ function EducationCard({ item, delay = 0 }) {
       )}
 
       {item.finalProject && (
-        <div className="mt-4 rounded-xl border border-blue-500/20 p-4">
+        <div className="mt-4 rounded-xl border border-blue-500/20 bg-slate-50/80 p-4 dark:bg-transparent">
           <p className="text-xs uppercase tracking-wider mb-1" style={gradientText}>
             Final Year Project
           </p>
 
-          <h3 className="text-white font-semibold">
+          <h3 className="text-slate-900 font-semibold dark:text-white">
             {item.finalProject}
           </h3>
 
@@ -132,7 +132,7 @@ function EducationCard({ item, delay = 0 }) {
     rounded-lg
     border
     border-[#0968E5]/30
-    bg-[#0968E5]/10
+    bg-[#0968E5]/5
     text-[#4ea1ff]
     text-sm
     font-medium
@@ -150,8 +150,8 @@ function EducationCard({ item, delay = 0 }) {
       )}
 
       {item.extra && (
-        <div className="mt-4 p-4 rounded-xl bg-white/10 border border-white/10">
-          <p className="text-white font-semibold">{item.extra}</p>
+        <div className="mt-4 p-4 rounded-xl bg-slate-50/80 border border-[#0968E5]/35 dark:bg-white/5 dark:border-white/5">
+          <p className="text-black font-semibold dark:text-white">{item.extra}</p>
         </div>
       )}
     </motion.article>
@@ -167,7 +167,7 @@ function SkillCard(props) {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="w-full rounded-3xl border border-white/10 bg-white/5 p-6 hover:scale-[1.02] transition"
+      className="w-full rounded-3xl border border-[#0968E5]/35 bg-white/80 p-6 shadow-[0_10px_35px_rgba(15,23,42,0.06)] hover:scale-[1.02] transition dark:border-white/10 dark:bg-white/5 dark:shadow-none"
     >
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         <div className="flex items-center gap-3">
@@ -175,12 +175,12 @@ function SkillCard(props) {
             <props.icon />
           </div>
 
-          <h2 className="font-semibold text-white text-lg">
+          <h2 className="font-semibold text-black text-lg dark:text-white">
             {props.title}
           </h2>
         </div>
 
-        <div className="flex items-center gap-3 text-xs text-slate-300">
+        <div className="flex items-center gap-3 text-xs text-black/80 dark:text-slate-300">
           {props.logo && (
             <img
               src={props.logo}
@@ -219,13 +219,13 @@ function SkillCard(props) {
           return (
             <div
               key={i}
-              className="flex items-center gap-2 bg-white/10 p-2 rounded-lg"
+              className="flex items-center gap-2 bg-slate-100/90 p-2 rounded-lg dark:bg-white/10"
             >
               <div className="text-xl" style={{ color: iconColor }}>
                 <Ico />
               </div>
 
-              <span className="text-xs text-slate-200">
+              <span className="text-xs text-black/80 dark:text-slate-200">
                 {it.label}
               </span>
             </div>
@@ -252,7 +252,7 @@ export default function Education() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1 }}
-            className="text-4xl font-bold mb-3 text-white"
+            className="text-4xl font-bold mb-3 text-black dark:text-white"
           >
             Education
           </motion.h1>
@@ -263,7 +263,7 @@ export default function Education() {
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, delay: 0.1 }}
-            className="text-slate-400 mb-8 max-w-3xl"
+            className="text-black/80 mb-8 max-w-3xl dark:text-slate-400"
           >
             My learning path combines formal study with practical training used directly in product work.
           </motion.p>
@@ -279,7 +279,7 @@ export default function Education() {
           </div>
 
           {/* SKILLS TITLE */}
-          <h1 className="text-4xl text-white font-bold mb-6">
+          <h1 className="text-4xl text-black font-bold mb-6 dark:text-white">
             Skills
           </h1>
 
@@ -374,7 +374,7 @@ export default function Education() {
                   whileInView="show"
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.03 }}
-                  className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl hover:scale-110 transition"
+                  className="w-14 h-14 md:w-20 md:h-20 flex items-center justify-center bg-slate-100/90 border border-[#0968E5]/35 rounded-2xl hover:scale-110 transition dark:bg-white/10 dark:border-white/20"
                 >
                   <div
                     className="text-2xl md:text-4xl"

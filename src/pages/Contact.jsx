@@ -94,11 +94,11 @@ export default function Contact() {
             animate="show"
             transition={{ duration: 0.9, ease: "easeOut" }}
           >
-            <h1 className="text-4xl font-bold text-white mb-3">
+            <h1 className="text-4xl font-bold text-black mb-3 dark:text-white">
               Contact Me
             </h1>
 
-            <p className="text-slate-400 mb-6 md:mb-10">
+            <p className="text-black/80 mb-6 md:mb-10 dark:text-slate-400">
               Have a project or question? Let’s build something awesome.
             </p>
           </motion.div>
@@ -110,17 +110,17 @@ export default function Contact() {
             initial="hidden"
             animate="show"
             transition={{ duration: 1 }}
-            className="w-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 md:p-8 hover:scale-[1.01] transition duration-300"
+            className="w-full rounded-3xl border border-[#0968E5]/35 bg-white/80 p-4 shadow-[0_10px_35px_rgba(15,23,42,0.06)] backdrop-blur-md md:p-8 hover:scale-[1.01] transition duration-300 dark:border-white/10 dark:bg-white/5 dark:shadow-none"
           >
             <div className="grid gap-5">
               {/* NAME */}
               <div>
                 <input
                   name="name"
-                  value={form.name}n
+                  value={form.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] transition"
+                  className="w-full p-4 rounded-2xl bg-slate-50/90 border border-slate-300/70 text-slate-900 outline-none focus:border-[#0968E5] transition dark:bg-black/30 dark:border-white/10 dark:text-white"
                 />
 
                 {errors.name && (
@@ -137,7 +137,7 @@ export default function Contact() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
-                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] transition"
+                  className="w-full p-4 rounded-2xl bg-slate-50/90 border border-slate-300/70 text-slate-900 outline-none focus:border-[#0968E5] transition dark:bg-black/30 dark:border-white/10 dark:text-white"
                 />
 
                 {errors.email && (
@@ -155,7 +155,7 @@ export default function Contact() {
                   onChange={handleChange}
                   rows={5}
                   placeholder="Your message..."
-                  className="w-full p-4 rounded-2xl bg-black/30 border border-white/10 text-white outline-none focus:border-[#0968E5] resize-none transition"
+                  className="w-full p-4 rounded-2xl bg-slate-50/90 border border-slate-300/70 text-slate-900 outline-none focus:border-[#0968E5] resize-none transition dark:bg-black/30 dark:border-white/10 dark:text-white"
                 />
 
                 {errors.message && (
@@ -184,7 +184,7 @@ export default function Contact() {
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-slate-400 text-sm"
+                    className="text-black/80 text-sm dark:text-slate-400"
                   >
                     {status}
                   </motion.p>

@@ -10,7 +10,7 @@ import ScrollToTop from '../app/components/ScrollToTop'
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-transparent text-black transition-colors duration-300 dark:text-slate-100">
       <ScrollToTop />
       <Navbar />
 
@@ -24,7 +24,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-    </>
+    </div>
   )
 }
 

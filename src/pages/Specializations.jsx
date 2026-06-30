@@ -120,11 +120,11 @@ export default function Specializations() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl font-bold text-white mb-3">
+            <h1 className="text-4xl font-bold text-black mb-3 dark:text-white">
               Specializations
             </h1>
 
-            <p className="text-slate-300 mb-10 max-w-2xl">
+            <p className="text-black/80 mb-10 max-w-2xl dark:text-slate-300">
               Core areas of expertise that help deliver strong frontend
               experiences and polished digital products.
             </p>
@@ -147,13 +147,16 @@ export default function Specializations() {
                   }}
                   className="
                     rounded-3xl
-                    border border-white/10
-                    bg-white/5
-                    backdrop-blur-sm
+                    border border-[#0968E5]/35
+                    bg-white/80
                     p-6
+                    shadow-[0_10px_35px_rgba(15,23,42,0.06)]
                     hover:scale-[1.02]
                     transition-all
                     duration-300
+                    dark:border-white/5
+                    dark:bg-white/5
+                    dark:shadow-none
                   "
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -164,12 +167,12 @@ export default function Specializations() {
                       }}
                     />
 
-                    <h2 className="text-xl font-semibold text-white">
+                    <h2 className="text-xl font-semibold text-black dark:text-white">
                       {item.title}
                     </h2>
                   </div>
 
-                  <p className="text-slate-400 mb-5 leading-relaxed">
+                  <p className="text-black/80 mb-5 leading-relaxed dark:text-slate-400">
                     {item.description}
                   </p>
 
@@ -184,8 +187,10 @@ export default function Specializations() {
                             flex items-center gap-2
                             px-3 py-1.5
                             rounded-lg
-                            bg-white/10
-                            border border-white/10
+                            bg-slate-100/90
+                            border border-[#0968E5]/35
+                            dark:bg-white/10
+                            dark:border-white/10
                           "
                         >
                           <BadgeIcon
@@ -195,7 +200,7 @@ export default function Specializations() {
                             }}
                           />
 
-                          <span className="text-xs font-medium text-white">
+                          <span className="text-xs font-medium text-black/80 dark:text-white">
                             {badge.label}
                           </span>
                         </div>
@@ -205,11 +210,11 @@ export default function Specializations() {
 
                   <div className="mt-5">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-slate-300">
+                      <span className="text-sm text-black/80 dark:text-slate-300">
                         <GiProgression />
                       </span>
 
-                      <span className="text-sm font-semibold text-white">
+                      <span className="text-sm font-semibold text-black dark:text-white">
                         {item.progress}%
                       </span>
                     </div>

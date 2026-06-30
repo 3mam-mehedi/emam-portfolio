@@ -5,6 +5,47 @@ html, body, #root {
   font-family: 'Electrolize', sans-serif;
 }
 
-body {
-  background: black;
+html {
+  color-scheme: light;
 }
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  color: #0f172a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
+.background-shell {
+  background-color: #f8fafc;
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 15%, #f8fafc 85%),
+    radial-gradient(circle at 50% 50%, rgba(9, 104, 229, 0.12) 0%, transparent 55%),
+    linear-gradient(115deg, transparent 46%, rgba(9, 104, 229, 0.08) 50%, transparent 54%),
+    linear-gradient(245deg, transparent 46%, rgba(9, 104, 229, 0.08) 50%, transparent 54%),
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 55px 55px, 55px 55px;
+}
+
+html.dark .background-shell {
+  background-color: #000205;
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 15%, #000205 85%),
+    radial-gradient(circle at 50% 50%, rgba(0, 34, 204, 0.25) 0%, transparent 55%),
+    linear-gradient(115deg, transparent 46%, rgba(0, 24, 153, 0.22) 50%, transparent 54%),
+    linear-gradient(245deg, transparent 46%, rgba(0, 24, 153, 0.22) 50%, transparent 54%),
+    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+}
+
