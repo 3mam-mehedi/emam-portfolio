@@ -26,15 +26,20 @@ html.dark body {
   color: #f8fafc;
 }
 
+/* 🚀 হোয়াইট ভার্সনে ব্যাকগ্রাউন্ড গ্রিড ও গ্লো আরও বেশি স্পষ্ট করার জন্য ফিক্স */
 .background-shell {
   background-color: #f8fafc;
   background-image:
-    radial-gradient(circle at 50% 50%, transparent 15%, #f8fafc 85%),
-    radial-gradient(circle at 50% 50%, rgba(9, 104, 229, 0.12) 0%, transparent 55%),
-    linear-gradient(115deg, transparent 46%, rgba(9, 104, 229, 0.08) 50%, transparent 54%),
-    linear-gradient(245deg, transparent 46%, rgba(9, 104, 229, 0.08) 50%, transparent 54%),
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    /* মাস্ককে আরও বেশি ছড়িয়ে দেওয়া হলো (transparent 60%) যাতে গ্রিড একদম ফ্রন্ট-লাইনে ভেসে ওঠে */
+    radial-gradient(circle at 50% 50%, transparent 60%, rgba(248, 250, 252, 0.1) 100%),
+    /* মাঝখানের টেকনিক্যাল গ্লো এফেক্টটা ওপারসিটি বাড়িয়ে ফুটিয়ে তোলা হলো (0.22 থেকে 0.32) */
+    radial-gradient(circle at 50% 50%, rgba(9, 104, 229, 0.32) 0%, transparent 65%),
+    /* ক্রস করার ডায়াগোনাল লাইনগুলোকে আরও বেশি ভিজিবল করা হলো */
+    linear-gradient(115deg, transparent 46%, rgba(9, 104, 229, 0.22) 50%, transparent 54%),
+    linear-gradient(245deg, transparent 46%, rgba(9, 104, 229, 0.22) 50%, transparent 54%),
+    /* গ্রিড লাইনগুলোর কনট্রাস্ট দ্বিগুণ (0.07 থেকে 0.14) করা হলো যাতে লাইট মোডে একদম নিখুঁত বোঝা যায় */
+    linear-gradient(to right, rgba(9, 104, 229, 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(9, 104, 229, 0.14) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 55px 55px, 55px 55px;
 }
 
@@ -48,4 +53,3 @@ html.dark .background-shell {
     linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
 }
-

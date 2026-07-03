@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Background from "../components/Background";
 
@@ -25,9 +25,7 @@ import {
   MdAttachEmail,
 } from "react-icons/md";
 
-
 import { FaLaptopFile } from "react-icons/fa6";
-
 
 const experiences = [
   {
@@ -103,6 +101,25 @@ const gradientText = {
 };
 
 export default function Experiences() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const hasDark = document.documentElement.classList.contains("dark");
+      setIsDarkMode(hasDark);
+    };
+
+    checkTheme();
+
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Background />
@@ -117,13 +134,16 @@ export default function Experiences() {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <h1
-              className="text-4xl text-black font-bold mb-4 dark:text-white"
-
+              className="text-4xl font-bold mb-4 transition-colors duration-300"
+              style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
             >
               Experiences
             </h1>
 
-            <p className="text-black/80 mb-8 dark:text-slate-300">
+            <p 
+              className="mb-8 transition-colors duration-300 font-medium" 
+              style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
+            >
               Professional journey across development, reporting and UI work.
             </p>
           </motion.div>
@@ -141,37 +161,51 @@ export default function Experiences() {
                   ease: "easeOut",
                   delay: idx * 0.15,
                 }}
+                /* 🚀 গ্লাস ইফেক্ট এবং ব্যাকড্রপ ব্লারের জন্য Tailwind ক্লাস ও ইনলাইন স্টাইল টিউনিং */
                 className="
                   w-full
                   rounded-3xl
-                  border border-[#0968E5]/35
-                  bg-white/80
+                  border
                   p-6
-                  shadow-[0_10px_35px_rgba(15,23,42,0.06)]
-                  hover:scale-[1.02]
-                  hover:border-[#0968E5]/40
+                  backdrop-blur-md
                   transition-all
                   duration-300
-                  dark:border-white/10
-                  dark:bg-white/5
-                  dark:shadow-none
+                  hover:scale-[1.02]
                 "
+                style={{
+                  // লাইট মোডে সাদা রঙের ট্রান্সপারেন্ট আবরণ এবং ডার্ক মোডে ডার্ক ব্লু মেশানো ট্রান্সপারেন্ট গ্লাস
+                  backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
+                  borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
+                  boxShadow: isDarkMode 
+                    ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" 
+                    : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
+                }}
               >
                 <div className="flex items-center justify-between mb-4 gap-3">
-                  <h2 className="text-xl font-semibold text-black dark:text-white">
+                  <h2 
+                    className="text-xl font-bold transition-colors duration-300"
+                    style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
+                  >
                     {item.role}
                   </h2>
 
-                  <span className="text-sm uppercase tracking-[0.2em] text-slate-500 whitespace-nowrap dark:text-white/40">
+                  <span 
+                    className="text-xs uppercase tracking-[0.2em] font-bold whitespace-nowrap transition-colors duration-300"
+                    style={{ color: isDarkMode ? "rgba(255,255,255,0.4)" : "#0968E5" }}
+                  >
                     {item.period}
                   </span>
                 </div>
 
-                <p className="text-black/85 flex items-center gap-2 mb-4 dark:text-white">
-                  <FaBuilding style={{ color: "#b6b7ba" }} />
+                <p 
+                  className="flex items-center gap-2 mb-5 font-semibold transition-colors duration-300"
+                  style={{ color: isDarkMode ? "#e2e8f0" : "#1e293b" }}
+                >
+                  <FaBuilding style={{ color: isDarkMode ? "#94a3b8" : "#0968E5" }} />
                   {item.company}
                 </p>
 
+                {/* স্কিল ব্যাজগুলোকেও সেমি-গ্লাস লুক দেওয়া হলো */}
                 <div className="flex flex-wrap gap-2">
                   {item.skills.map((skill, i) => (
                     <span
@@ -180,19 +214,19 @@ export default function Experiences() {
                         flex items-center gap-2
                         px-3 py-1.5
                         rounded-full
-                        bg-slate-100/90
-                        text-slate-700
                         text-sm
-                        border border-[#0968E5]/35
-                        hover:bg-slate-200/80
-                        dark:bg-white/5
-                        dark:text-white
-                        dark:border-white/5
-                        dark:hover:bg-white/5
+                        font-medium
+                        backdrop-blur-sm
                         hover:scale-105
                         transition-all
                         duration-300
                       "
+                      style={{
+                        backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.07)" : "rgba(255, 255, 255, 0.75)",
+                        color: isDarkMode ? "#ffffff" : "#0f172a",
+                        border: isDarkMode ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(9, 104, 229, 0.18)",
+                        boxShadow: isDarkMode ? "none" : "0 2px 8px rgba(9, 104, 229, 0.04)"
+                      }}
                     >
                       <span
                         style={{

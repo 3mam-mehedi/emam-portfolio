@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Background from "../components/Background";
 
-/* ================= ANIMATION ================= */
 const fadeLeft = {
   hidden: { x: -60, opacity: 0 },
   show: { x: 0, opacity: 1 },
@@ -15,139 +15,95 @@ const fadeUp = {
 };
 
 export default function Contact() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("");
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
+    const checkTheme = () => {
+      const hasDark = document.documentElement.classList.contains("dark");
+      setIsDarkMode(hasDark);
     };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
   }, []);
 
   function validate() {
     const e = {};
-
     if (!form.name.trim()) e.name = "Name is required";
-
     if (!form.email.trim()) {
       e.email = "Email is required";
     } else if (!/^\S+@\S+\.\S+$/.test(form.email)) {
       e.email = "Enter a valid email";
     }
-
-    if (!form.message.trim()) {
-      e.message = "Message is required";
-    }
-
+    if (!form.message.trim()) e.message = "Message is required";
     setErrors(e);
     return Object.keys(e).length === 0;
   }
 
   function handleChange(e) {
-    setForm((s) => ({
-      ...s,
-      [e.target.name]: e.target.value,
-    }));
+    setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    setStatus("");
-
     if (!validate()) return;
-
     const subject = encodeURIComponent(`Contact from ${form.name}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n---\n${form.name}\n${form.email}`
-    );
-
+    const body = encodeURIComponent(`${form.message}\n\n---\n${form.name}\n${form.email}`);
     window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
-
     setStatus("Opening mail client...");
-
-    setForm({
-      name: "",
-      email: "",
-      message: "",
-    });
-
-    setErrors({});
+    setForm({ name: "", email: "", message: "" });
   }
 
   return (
     <>
       <Background />
-
-      <section className="h-screen overflow-hidden px-4 lg:px-12 pt-16 md:pt-24 pb-8 flex items-start md:items-center">
+      <section className="min-h-screen pt-24 pb-10 px-4 lg:px-12">
         <div className="max-w-5xl mx-auto w-full">
-          {/* ================= HEADING ================= */}
-          <motion.div
-            variants={fadeLeft}
-            initial="hidden"
-            animate="show"
-            transition={{ duration: 0.9, ease: "easeOut" }}
-          >
-            <h1 className="text-4xl font-bold text-black mb-3 dark:text-white">
+          <motion.div variants={fadeLeft} initial="hidden" animate="show" transition={{ duration: 0.9 }}>
+            <h1 className="text-4xl font-bold mb-3 transition-colors duration-300" style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}>
               Contact Me
             </h1>
-
-            <p className="text-black/80 mb-6 md:mb-10 dark:text-slate-400">
+            <p className="mb-10 font-medium transition-colors duration-300" style={{ color: isDarkMode ? "#cbd5e1" : "#475569" }}>
               Have a project or question? Let’s build something awesome.
             </p>
           </motion.div>
 
-          {/* ================= FORM ================= */}
           <motion.form
             onSubmit={handleSubmit}
             variants={fadeUp}
             initial="hidden"
             animate="show"
             transition={{ duration: 1 }}
-            className="w-full rounded-3xl border border-[#0968E5]/35 bg-white/80 p-4 shadow-[0_10px_35px_rgba(15,23,42,0.06)] backdrop-blur-md md:p-8 hover:scale-[1.01] transition duration-300 dark:border-white/10 dark:bg-white/5 dark:shadow-none"
+            className="rounded-3xl border p-6 md:p-8 backdrop-blur-md"
+            style={{
+              backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
+              borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
+              boxShadow: isDarkMode ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
+            }}
           >
             <div className="grid gap-5">
-              {/* NAME */}
-              <div>
-                <input
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your name"
-                  className="w-full p-4 rounded-2xl bg-slate-50/90 border border-slate-300/70 text-slate-900 outline-none focus:border-[#0968E5] transition dark:bg-black/30 dark:border-white/10 dark:text-white"
-                />
-
-                {errors.name && (
-                  <p className="text-red-400 text-sm mt-2">
-                    {errors.name}
-                  </p>
-                )}
-              </div>
-
-              {/* EMAIL */}
-              <div>
-                <input
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="you@example.com"
-                  className="w-full p-4 rounded-2xl bg-slate-50/90 border border-slate-300/70 text-slate-900 outline-none focus:border-[#0968E5] transition dark:bg-black/30 dark:border-white/10 dark:text-white"
-                />
-
-                {errors.email && (
-                  <p className="text-red-400 text-sm mt-2">
-                    {errors.email}
-                  </p>
-                )}
-              </div>
-
-              {/* MESSAGE */}
+              {["name", "email"].map((field) => (
+                <div key={field}>
+                  <input
+                    name={field}
+                    value={form[field]}
+                    onChange={handleChange}
+                    placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                    className="w-full p-4 rounded-2xl border outline-none transition-all duration-300 focus:ring-2 focus:ring-[#0968E5]"
+                    style={{
+                        backgroundColor: isDarkMode ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.5)",
+                        borderColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(9, 104, 229, 0.2)",
+                        color: isDarkMode ? "#fff" : "#000"
+                    }}
+                  />
+                  {errors[field] && <p className="text-red-400 text-sm mt-2">{errors[field]}</p>}
+                </div>
+              ))}
+              
               <div>
                 <textarea
                   name="message"
@@ -155,40 +111,27 @@ export default function Contact() {
                   onChange={handleChange}
                   rows={5}
                   placeholder="Your message..."
-                  className="w-full p-4 rounded-2xl bg-slate-50/90 border border-slate-300/70 text-slate-900 outline-none focus:border-[#0968E5] resize-none transition dark:bg-black/30 dark:border-white/10 dark:text-white"
+                  className="w-full p-4 rounded-2xl border outline-none transition-all duration-300 focus:ring-2 focus:ring-[#0968E5]"
+                  style={{
+                    backgroundColor: isDarkMode ? "rgba(0, 0, 0, 0.2)" : "rgba(255, 255, 255, 0.5)",
+                    borderColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(9, 104, 229, 0.2)",
+                    color: isDarkMode ? "#fff" : "#000"
+                  }}
                 />
-
-                {errors.message && (
-                  <p className="text-red-400 text-sm mt-2">
-                    {errors.message}
-                  </p>
-                )}
+                {errors.message && <p className="text-red-400 text-sm mt-2">{errors.message}</p>}
               </div>
 
-              {/* BUTTON */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="px-6 py-3 rounded-2xl text-white font-semibold transition duration-300"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, #0968E5, #091970)",
-                  }}
+                  className="px-8 py-3 rounded-2xl text-white font-bold transition-all duration-300"
+                  style={{ background: "linear-gradient(90deg, #0968E5 0%, #091970 100%)" }}
                 >
                   Send Message
                 </motion.button>
-
-                {status && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-black/80 text-sm dark:text-slate-400"
-                  >
-                    {status}
-                  </motion.p>
-                )}
+                {status && <p className="text-sm font-medium" style={{ color: isDarkMode ? "#cbd5e1" : "#475569" }}>{status}</p>}
               </div>
             </div>
           </motion.form>

@@ -1,43 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Background from "../components/Background";
 
 import {
   FaReact,
-  FaCode,
-  FaMobileAlt,
   FaFigma,
-  FaLayerGroup,
   FaHtml5,
   FaCss3,
-
 } from "react-icons/fa";
-import { TbApi ,TbFileSettingsFilled ,TbNavigationStar } from "react-icons/tb";
-import { GiProgression ,GiCircuitry ,GiWireframeGlobe } from "react-icons/gi";
-import { BsCpu, BsJavascript ,BsCCircleFill} from "react-icons/bs";
-import { MdOutlinePhoneIphone,MdOutlineScreenSearchDesktop } from "react-icons/md";
-import { SiTailwindcss,SiArduino ,SiDart ,SiCplusplus ,SiAltiumdesigner ,SiFirebase } from "react-icons/si";
+import { TbApi, TbFileSettingsFilled, TbNavigationStar } from "react-icons/tb";
+import { GiProgression, GiCircuitry, GiWireframeGlobe } from "react-icons/gi";
+import { BsCpu, BsJavascript } from "react-icons/bs";
+import { MdOutlinePhoneIphone, MdOutlineScreenSearchDesktop } from "react-icons/md";
+import { SiTailwindcss, SiArduino, SiDart, SiCplusplus, SiAltiumdesigner, SiFirebase } from "react-icons/si";
 import { BiSolidWidget } from "react-icons/bi";
 import { FaLaptopFile } from "react-icons/fa6";
+
 const fadeUp = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-  },
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
 };
 
 const specializations = [
   {
     title: "Frontend Developer",
     progress: 95,
-    description:
-      "Builds the user-facing part of websites and web applications.",
+    description: "Builds the user-facing part of websites and web applications.",
     icon: FaReact,
     badges: [
       { label: "HTML", icon: FaHtml5, color: "#e44d26" },
@@ -51,8 +41,7 @@ const specializations = [
   {
     title: "Embedded Systems Engineer",
     progress: 90,
-    description:
-      "Develops software and hardware for embedded devices and smart systems.",
+    description: "Develops software and hardware for embedded devices and smart systems.",
     icon: BsCpu,
     badges: [
       { label: "C++", icon: SiCplusplus, color: "#0281d0" },
@@ -64,8 +53,7 @@ const specializations = [
   {
     title: "UI / UX Design",
     progress: 80,
-    description:
-      "Designs intuitive and visually appealing user experiences and interfaces.",
+    description: "Designs intuitive and visually appealing user experiences and interfaces.",
     icon: FaFigma,
     badges: [
       { label: "Figma", icon: FaFigma, color: "#904cff" },
@@ -92,19 +80,32 @@ const specializations = [
 ];
 
 export default function Specializations() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const hasDark = document.documentElement.classList.contains("dark");
+      setIsDarkMode(hasDark);
+    };
+
+    checkTheme();
+
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Background />
 
       <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
-          <linearGradient
-            id="specialGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="0%"
-          >
+          <linearGradient id="specialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#0968E5" />
             <stop offset="100%" stopColor="#091970" />
           </linearGradient>
@@ -113,6 +114,8 @@ export default function Specializations() {
 
       <section className="w-full px-4 lg:px-12 pt-24 pb-10">
         <div className="max-w-5xl mx-auto">
+          
+          {/* HEADER SECTION */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -120,16 +123,21 @@ export default function Specializations() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl font-bold text-black mb-3 dark:text-white">
+            <h1 
+              className="text-4xl font-bold mb-3 transition-colors duration-300"
+              style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
+            >
               Specializations
             </h1>
-
-            <p className="text-black/80 mb-10 max-w-2xl dark:text-slate-300">
-              Core areas of expertise that help deliver strong frontend
-              experiences and polished digital products.
+            <p 
+              className="mb-10 max-w-2xl font-medium transition-colors duration-300"
+              style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
+            >
+              Core areas of expertise that help deliver strong frontend experiences and polished digital products.
             </p>
           </motion.div>
 
+          {/* CARDS GRID */}
           <div className="grid md:grid-cols-2 gap-6">
             {specializations.map((item, index) => {
               const MainIcon = item.icon;
@@ -141,66 +149,51 @@ export default function Specializations() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  transition={{
-                    duration: 0.8,
-                    delay: index * 0.1,
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="rounded-3xl border p-6 backdrop-blur-md hover:scale-[1.02] transition-all duration-300"
+                  style={{
+                    backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
+                    borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
+                    boxShadow: isDarkMode ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
                   }}
-                  className="
-                    rounded-3xl
-                    border border-[#0968E5]/35
-                    bg-white/80
-                    p-6
-                    shadow-[0_10px_35px_rgba(15,23,42,0.06)]
-                    hover:scale-[1.02]
-                    transition-all
-                    duration-300
-                    dark:border-white/5
-                    dark:bg-white/5
-                    dark:shadow-none
-                  "
                 >
+                  {/* Card Title */}
                   <div className="flex items-center gap-3 mb-4">
-                    <MainIcon
-                      size={28}
-                      style={{
-                        fill: "url(#specialGradient)",
-                      }}
-                    />
-
-                    <h2 className="text-xl font-semibold text-black dark:text-white">
+                    <MainIcon size={28} style={{ fill: "url(#specialGradient)" }} />
+                    <h2 
+                      className="text-xl font-bold transition-colors duration-300"
+                      style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
+                    >
                       {item.title}
                     </h2>
                   </div>
 
-                  <p className="text-black/80 mb-5 leading-relaxed dark:text-slate-400">
+                  {/* Card Description */}
+                  <p 
+                    className="mb-5 leading-relaxed text-sm transition-colors duration-300"
+                    style={{ color: isDarkMode ? "#slate-400" : "#475569" }}
+                  >
                     {item.description}
                   </p>
 
+                  {/* Badges */}
                   <div className="flex flex-wrap gap-2">
                     {item.badges.map((badge) => {
                       const BadgeIcon = badge.icon;
-
                       return (
                         <div
                           key={badge.label}
-                          className="
-                            flex items-center gap-2
-                            px-3 py-1.5
-                            rounded-lg
-                            bg-slate-100/90
-                            border border-[#0968E5]/35
-                            dark:bg-white/10
-                            dark:border-white/10
-                          "
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all duration-300"
+                          style={{
+                            backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "#ffffff",
+                            borderColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(9, 104, 229, 0.15)",
+                          }}
                         >
-                          <BadgeIcon
-                            size={12}
-                            style={{
-                              color: badge.color,
-                            }}
-                          />
-
-                          <span className="text-xs font-medium text-black/80 dark:text-white">
+                          <BadgeIcon size={14} style={{ color: badge.color }} />
+                          <span 
+                            className="text-xs font-semibold transition-colors duration-300"
+                            style={{ color: isDarkMode ? "#ffffff" : "#334155" }}
+                          >
                             {badge.label}
                           </span>
                         </div>
@@ -208,40 +201,47 @@ export default function Specializations() {
                     })}
                   </div>
 
-                  <div className="mt-5">
+                  {/* Progress Bar */}
+                  <div className="mt-6">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-black/80 dark:text-slate-300">
+                      <span 
+                        className="text-sm transition-colors duration-300"
+                        style={{ color: isDarkMode ? "#cbd5e1" : "#475569" }}
+                      >
                         <GiProgression />
                       </span>
-
-                      <span className="text-sm font-semibold text-black dark:text-white">
+                      <span 
+                        className="text-sm font-bold transition-colors duration-300"
+                        style={{ color: isDarkMode ? "#ffffff" : "#0968E5" }}
+                      >
                         {item.progress}%
                       </span>
                     </div>
 
-                    <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div 
+                      className="w-full h-2 rounded-full overflow-hidden"
+                      style={{
+                        backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(9, 104, 229, 0.1)"
+                      }}
+                    >
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{
-                          width: item.progress + "%",
-                        }}
+                        whileInView={{ width: item.progress + "%" }}
                         viewport={{ once: true }}
-                        transition={{
-                          duration: 1.2,
-                          delay: index * 0.15,
-                        }}
+                        transition={{ duration: 1.2, delay: index * 0.15 }}
                         className="h-full rounded-full"
                         style={{
-                          background:
-                            "linear-gradient(90deg, #0968E5 0%, #091970 100%)",
+                          background: "linear-gradient(90deg, #0968E5 0%, #091970 100%)",
                         }}
                       />
                     </div>
                   </div>
+
                 </motion.div>
               );
             })}
           </div>
+
         </div>
       </section>
     </>

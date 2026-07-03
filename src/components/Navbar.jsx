@@ -16,33 +16,32 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  
+  // ১. লোকাল স্টোরেজ বা সিস্টেম সেটিংস থেকে থিম ইনিশিয়ালাইজ করা
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) return savedTheme;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
+  
   const location = useLocation();
   const navigate = useNavigate();
 
+  // ২. থিম স্টেট চেঞ্জ হলেই <html> ক্লাসে ডার্ক মোড অ্যাড/রিমুভ হবে
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initialTheme = savedTheme || systemTheme;
-
-    setTheme(initialTheme);
-    if (initialTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
+    const root = document.documentElement;
     if (theme === "dark") {
-      setTheme("light");
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      setTheme("dark");
-      document.documentElement.classList.add("dark");
+      root.classList.add("dark");
       localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
+  }, [theme]);
+
+  // ৩. সিম্পল টগল ফাংশন
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const navItems = [
@@ -60,7 +59,6 @@ export default function Navbar() {
     WebkitTextFillColor: "transparent",
   };
 
-  // ANIMAÇÃO PREMIUM: Efeito de órbita elástica com Spring physics
   const orbitalVariants = {
     initial: { y: 25, rotateZ: -70, scale: 0.3, opacity: 0 },
     animate: { y: 0, rotateZ: 0, scale: 1, opacity: 1 },
@@ -125,7 +123,7 @@ export default function Navbar() {
               );
             })}
 
-            {/* TOGGLE BUTTON (DESKTOP ANIMADO) */}
+            {/* TOGGLE BUTTON (DESKTOP) */}
             <button
               onClick={toggleTheme}
               className="relative overflow-hidden rounded-full border border-[#0968E5]/35 bg-white/80 hover:border-[#0968E5]/55 hover:bg-white shadow-inner transition-colors w-9 h-9 flex items-center justify-center cursor-pointer dark:border-white/10 dark:bg-black/20 dark:hover:border-white/20 dark:hover:bg-black/40"
@@ -154,7 +152,7 @@ export default function Navbar() {
                     transition={springTransition}
                     className="absolute flex items-center justify-center"
                   >
-                    <IoMoonSharp size={18} className="text-slate-800 dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
+                    <IoMoonSharp size={18} className="text-[#091970] dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -163,7 +161,7 @@ export default function Navbar() {
 
           {/* Mobile Right Controls */}
           <div className="flex items-center gap-4 lg:hidden ml-auto">
-            {/* TOGGLE BUTTON (MOBILE ANIMADO) */}
+            {/* TOGGLE BUTTON (MOBILE) */}
             <button
               onClick={toggleTheme}
               className="relative overflow-hidden rounded-full border border-[#0968E5]/35 bg-white/80 shadow-inner w-10 h-10 flex items-center justify-center cursor-pointer dark:border-white/10 dark:bg-black/20"
@@ -192,7 +190,7 @@ export default function Navbar() {
                     transition={springTransition}
                     className="absolute flex items-center justify-center"
                   >
-                    <IoMoonSharp size={22} className="text-slate-800 dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
+                    <IoMoonSharp size={22} className="text-[#091970] dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
                   </motion.div>
                 )}
               </AnimatePresence>
