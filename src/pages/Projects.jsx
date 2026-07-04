@@ -86,10 +86,10 @@ export default function Projects() {
       <div className="w-full px-4 lg:px-12 pt-24 pb-8">
         <div className="max-w-5xl mx-auto">
           <motion.div variants={fadeLeft} initial="hidden" animate="show" transition={{ duration: 1 }}>
-            <h1 className="text-4xl font-bold mb-3 transition-colors duration-300" style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}>
+            <h1 className="text-4xl font-bold mb-3 transition-colors duration-300" style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}>
               Projects
             </h1>
-            <p className="mb-10 font-medium transition-colors duration-300" style={{ color: isDarkMode ? "#cbd5e1" : "#475569" }}>
+            <p className="mb-10 font-medium transition-colors duration-300" style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}>
               Showcasing some of my best work, ranging from web applications to complex systems.
             </p>
           </motion.div>
@@ -97,13 +97,14 @@ export default function Projects() {
           <div className="grid gap-6 md:grid-cols-2">
             {projects.map((project, idx) => (
               <motion.article
+                id={project.name === "Traffic Light System" ? "traffic-light-system" : undefined}
                 key={project.name}
                 variants={fadeLeft}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: idx * 0.15 }}
-                className="rounded-3xl border p-4 sm:p-6 backdrop-blur-md hover:scale-[1.02] transition-all duration-300"
+                className="rounded-3xl border p-4 sm:p-6 hover:scale-[1.02] transition-all duration-300"
                 style={{
                   backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
                   borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
@@ -129,13 +130,30 @@ export default function Projects() {
                 <div className="flex flex-wrap gap-2">
                   {project.badges.map((badge, i) => {
                     const Icon = badge.icon;
+
                     return (
-                      <span key={i} className="flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-semibold" 
-                            style={{ 
-                                backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "#ffffff",
-                                borderColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(9, 104, 229, 0.15)",
-                                color: isDarkMode ? "#e2e8f0" : "#334155" 
-                            }}>
+                      <span
+                        key={i}
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold backdrop-blur-md hover:scale-105 transition-all duration-300"
+                        style={{
+                          backgroundColor: isDarkMode
+                            ? "rgba(255, 255, 255, 0.06)"
+                            : "rgba(255, 255, 255, 0.35)",
+
+                          backdropFilter: "blur(18px)",
+                          WebkitBackdropFilter: "blur(18px)",
+
+                          border: isDarkMode
+                            ? "1px solid rgba(255,255,255,0.12)"
+                            : "1px solid rgba(255,255,255,0.45)",
+
+                          boxShadow: isDarkMode
+                            ? "0 8px 24px rgba(0,0,0,.18)"
+                            : "0 8px 24px rgba(9,104,229,.08)",
+
+                          color: isDarkMode ? "#e2e8f0" : "#334155",
+                        }}
+                      >
                         <Icon className={`${badge.color} text-sm`} />
                         {badge.name}
                       </span>
@@ -143,13 +161,20 @@ export default function Projects() {
                   })}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-[#0968E5]/35 dark:border-white/10 flex items-center justify-between">
+                <div
+                  className="mt-6 pt-4 flex items-center justify-between"
+                  style={{
+                    borderTop: isDarkMode
+                      ? "1px solid rgba(255,255,255,0.10)"
+                      : "1px solid #c2c0c0",
+                  }}
+                >
                   <span className="text-xs uppercase tracking-[0.2em] transition-colors duration-300" style={{ color: isDarkMode ? "#94a3b8" : "#475569" }}>
                     Live Website
                   </span>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" 
-                     className="group inline-flex items-center gap-2 text-sm font-bold transition hover:text-[#4DA3FF]" 
-                     style={{ color: isDarkMode ? "#ffffff" : "#091970" }}>
+                  <a href={project.live} target="_blank" rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 text-sm font-bold transition hover:text-[#4DA3FF]"
+                    style={{ color: isDarkMode ? "#ffffff" : "#091970" }}>
                     Visit Project <FaExternalLinkAlt className="text-xs group-hover:translate-x-1" />
                   </a>
                 </div>

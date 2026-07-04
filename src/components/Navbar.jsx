@@ -16,20 +16,21 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  
-  // ১. লোকাল স্টোরেজ বা সিস্টেম সেটিংস থেকে থিম ইনিশিয়ালাইজ করা
+
   const [theme, setTheme] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
+
     if (savedTheme) return savedTheme;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+    return "dark";
   });
-  
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  // ২. থিম স্টেট চেঞ্জ হলেই <html> ক্লাসে ডার্ক মোড অ্যাড/রিমুভ হবে
   useEffect(() => {
     const root = document.documentElement;
+
     if (theme === "dark") {
       root.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -39,18 +40,37 @@ export default function Navbar() {
     }
   }, [theme]);
 
-  // ৩. সিম্পল টগল ফাংশন
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   const navItems = [
     { name: "Home", path: "/", icon: House },
-    { name: "Experiences", path: "/experiences", icon: BriefcaseBusiness },
-    { name: "Educations", path: "/educations", icon: GraduationCap },
-    { name: "Specializations", path: "/specializations", icon: Sparkles },
-    { name: "Projects", path: "/projects", icon: FolderKanban },
-    { name: "Contact", path: "/contact", icon: Mail },
+    {
+      name: "Experiences",
+      path: "/experiences",
+      icon: BriefcaseBusiness,
+    },
+    {
+      name: "Educations",
+      path: "/educations",
+      icon: GraduationCap,
+    },
+    {
+      name: "Specializations",
+      path: "/specializations",
+      icon: Sparkles,
+    },
+    {
+      name: "Projects",
+      path: "/projects",
+      icon: FolderKanban,
+    },
+    {
+      name: "Contact",
+      path: "/contact",
+      icon: Mail,
+    },
   ];
 
   const gradientText = {
@@ -60,9 +80,24 @@ export default function Navbar() {
   };
 
   const orbitalVariants = {
-    initial: { y: 25, rotateZ: -70, scale: 0.3, opacity: 0 },
-    animate: { y: 0, rotateZ: 0, scale: 1, opacity: 1 },
-    exit: { y: -25, rotateZ: 70, scale: 0.3, opacity: 0 },
+    initial: {
+      y: 25,
+      rotateZ: -70,
+      scale: 0.3,
+      opacity: 0,
+    },
+    animate: {
+      y: 0,
+      rotateZ: 0,
+      scale: 1,
+      opacity: 1,
+    },
+    exit: {
+      y: -25,
+      rotateZ: 70,
+      scale: 0.3,
+      opacity: 0,
+    },
   };
 
   const springTransition = {
@@ -75,7 +110,13 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 w-full z-50">
       <svg width="0" height="0">
         <defs>
-          <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <linearGradient
+            id="navGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
+          >
             <stop offset="0%" stopColor="#0968E5" />
             <stop offset="100%" stopColor="#091970" />
           </linearGradient>
@@ -85,7 +126,36 @@ export default function Navbar() {
       {/* Desktop Glass */}
       <div className="absolute inset-0 hidden lg:block backdrop-blur-3xl bg-transparent" />
 
-      <div className="relative flex items-center justify-center px-4 lg:px-12 py-2 lg:py-1.5 backdrop-blur-md bg-white/70 shadow-[0_8px_30px_rgba(15,23,42,0.08)] border-b border-[#0968E5]/35 dark:border-white/10 dark:bg-black/20 dark:shadow-none lg:backdrop-blur-none lg:bg-transparent lg:border-none lg:shadow-none">
+      {/* =========================
+          NAVBAR
+      ========================== */}
+
+      <div
+        className="
+        relative
+        flex
+        items-center
+        justify-center
+        px-4
+        lg:px-12
+        py-2
+        lg:py-1.5
+
+        backdrop-blur-3xl
+        bg-white/20
+        border-b border-white/20
+        shadow-[0_8px_30px_rgba(0,0,0,.08)]
+
+        dark:bg-black/20
+        dark:border-white/10
+        dark:shadow-[0_8px_30px_rgba(0,0,0,.35)]
+
+        lg:backdrop-blur-none
+        lg:bg-transparent
+        lg:border-none
+        lg:shadow-none
+      "
+      >
         <div className="w-full flex items-center justify-between lg:justify-center lg:gap-17">
           <img
             src="/assets/logo/10.png"
@@ -94,7 +164,10 @@ export default function Navbar() {
             className="w-10 h-10 rounded-full border border-[#0968E5]/35 bg-white/80 shadow-sm cursor-pointer dark:border-white/10 dark:bg-black/20"
           />
 
-          {/* Desktop Menu */}
+          {/* =========================
+              Desktop Menu
+          ========================== */}
+
           <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -115,15 +188,18 @@ export default function Navbar() {
                   <span style={gradientText}>{item.name}</span>
 
                   <span
-                    className={`absolute left-0 -bottom-1 h-[2px] rounded-full bg-gradient-to-r from-[#0968E5] to-[#091970] shadow-[0_0_12px_rgba(9,104,229,0.7)] transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
+                    className={`absolute left-0 -bottom-1 h-[2px] rounded-full bg-gradient-to-r from-[#0968E5] to-[#091970] shadow-[0_0_12px_rgba(9,104,229,0.7)] transition-all duration-300 ${isActive
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                      }`}
                   />
+
                 </NavLink>
               );
             })}
 
-            {/* TOGGLE BUTTON (DESKTOP) */}
+            {/* Desktop Theme Button */}
+
             <button
               onClick={toggleTheme}
               className="relative overflow-hidden rounded-full border border-[#0968E5]/35 bg-white/80 hover:border-[#0968E5]/55 hover:bg-white shadow-inner transition-colors w-9 h-9 flex items-center justify-center cursor-pointer dark:border-white/10 dark:bg-black/20 dark:hover:border-white/20 dark:hover:bg-black/40"
@@ -140,7 +216,10 @@ export default function Navbar() {
                     transition={springTransition}
                     className="absolute flex items-center justify-center"
                   >
-                    <IoIosSunny size={20} className="text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,0.6)]" />
+                    <IoIosSunny
+                      size={20}
+                      className="text-yellow-400 drop-shadow-[0_0_6px_rgba(250,204,21,.6)]"
+                    />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -152,19 +231,24 @@ export default function Navbar() {
                     transition={springTransition}
                     className="absolute flex items-center justify-center"
                   >
-                    <IoMoonSharp size={18} className="text-[#091970] dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
+                    <IoMoonSharp
+                      size={18}
+                      className="text-[#091970] dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,.4)]"
+                    />
                   </motion.div>
                 )}
               </AnimatePresence>
             </button>
           </div>
 
-          {/* Mobile Right Controls */}
+          {/* =========================
+              Mobile Controls
+          ========================== */}
           <div className="flex items-center gap-4 lg:hidden ml-auto">
-            {/* TOGGLE BUTTON (MOBILE) */}
+            {/* Mobile Theme Button */}
             <button
               onClick={toggleTheme}
-              className="relative overflow-hidden rounded-full border border-[#0968E5]/35 bg-white/80 shadow-inner w-10 h-10 flex items-center justify-center cursor-pointer dark:border-white/10 dark:bg-black/20"
+              className="relative overflow-hidden rounded-full border border-white/20 bg-white/20 backdrop-blur-2xl shadow-inner w-10 h-10 flex items-center justify-center cursor-pointer dark:border-white/10 dark:bg-black/20"
               aria-label="Toggle Theme"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -178,7 +262,10 @@ export default function Navbar() {
                     transition={springTransition}
                     className="absolute flex items-center justify-center"
                   >
-                    <IoIosSunny size={24} className="text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]" />
+                    <IoIosSunny
+                      size={24}
+                      className="text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,.6)]"
+                    />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -190,14 +277,20 @@ export default function Navbar() {
                     transition={springTransition}
                     className="absolute flex items-center justify-center"
                   >
-                    <IoMoonSharp size={22} className="text-[#091970] dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
+                    <IoMoonSharp
+                      size={22}
+                      className="text-[#091970] dark:text-white drop-shadow-[0_0_6px_rgba(255,255,255,.4)]"
+                    />
                   </motion.div>
                 )}
               </AnimatePresence>
             </button>
 
             {/* Mobile Menu Button */}
-            <button onClick={() => setOpen(!open)} className="cursor-pointer">
+            <button
+              onClick={() => setOpen(!open)}
+              className="cursor-pointer"
+            >
               {open ? (
                 <X size={28} style={{ stroke: "url(#navGradient)" }} />
               ) : (
@@ -211,13 +304,41 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* =========================
+          Mobile Menu
+      ========================= */}
+
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-          open ? "max-h-[500px]" : "max-h-0"
-        }`}
+        className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-[500px]" : "max-h-0"
+          }`}
       >
-        <ul className="w-full border-t border-b border-[#0968E5]/35 bg-white/95 backdrop-blur-3xl shadow-[0_10px_30px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-black/80 dark:shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+        <ul
+          className="w-full border-t border-b backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,.12)]"
+          style={{
+            background:
+              theme === "dark"
+                ? "rgba(10, 25, 70, 0.30)"
+                : "rgba(255, 255, 255, 0.25)",
+
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+
+            borderTopColor:
+              theme === "dark"
+                ? "rgba(255,255,255,0.08)"
+                : "rgba(255,255,255,0.45)",
+
+            borderBottomColor:
+              theme === "dark"
+                ? "rgba(255,255,255,0.08)"
+                : "rgba(255,255,255,0.45)",
+
+            boxShadow:
+              theme === "dark"
+                ? "0 12px 35px rgba(0,0,0,.35)"
+                : "0 12px 35px rgba(9,104,229,.08)",
+          }}
+        >
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
@@ -225,16 +346,15 @@ export default function Navbar() {
             return (
               <li
                 key={item.name}
-                className="border-b border-[#0968E5]/35 last:border-b-0 dark:border-white/5"
+                className="border-b border-[#0968E5]/15 last:border-b-0 dark:border-white/5"
               >
                 <NavLink
                   to={item.path}
                   onClick={() => setOpen(false)}
-                  className={`flex items-center gap-4 px-8 py-4 transition-all duration-300 ${
-                    isActive
-                      ? "border-l-4 border-blue-500 bg-slate-100/90 dark:bg-white/10"
-                      : "border-l-4 border-transparent hover:bg-slate-100/80 active:bg-slate-200/80 dark:hover:bg-white/5 dark:active:bg-white/10"
-                  }`}
+                  className={`flex items-center gap-4 px-8 py-4 transition-all duration-300 ${isActive
+                    ? "border-l-4 border-[#0968E5] bg-blue-50 dark:bg-white/10"
+                    : "border-l-4 border-transparent hover:bg-white/10 active:bg-white/15 dark:hover:bg-white/5 dark:active:bg-white/10"
+                    }`}
                 >
                   <Icon
                     size={20}
@@ -259,4 +379,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-}
+} 

@@ -39,7 +39,7 @@ export default function Home() {
     <>
       <Background />
 
-      <section className="min-h-screen flex items-center px-4 lg:px-12 pt-2 lg:pt-24 pb-4 bg-white/5 dark:bg-transparent backdrop-blur-[2px] transition-colors duration-500">
+      <section className="min-h-screen flex items-center px-4 lg:px-12 pt-2 lg:pt-24 pb-4 bg-white/5 dark:bg-transparent transition-colors duration-500">
         <div className="max-w-5xl mx-auto w-full">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-14">
 
@@ -58,7 +58,7 @@ export default function Home() {
               </h1>
 
               {/* FIX 1: ইনলাইন স্টাইল দিয়ে লাইট মোডে সরাসরি কুচকুচে কালো (#0f172a) কালার হার্ডকোড করে দেওয়া হলো */}
-              <p 
+              <p
                 className="mt-3 md:mt-6 text-base sm:text-xl md:text-3xl font-bold transition-colors duration-500"
                 style={{ color: isDarkMode ? "#cbd5e1" : "#0f172a" }}
               >
@@ -79,15 +79,24 @@ export default function Home() {
 
               {/* SOCIAL LINKS */}
               <div className="flex items-center gap-4 md:gap-5 mt-6 md:mt-8">
-                
+
                 {/* LINKEDIN */}
                 <a
                   href="https://www.linkedin.com/in/emam-mehedi-s-e/"
                   className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-md transition-all duration-500 hover:scale-125 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(10,102,194,0.8)]"
-                  style={{ 
-                    backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#ffffff",
-                    border: isDarkMode ? "1px solid rgba(9,25,112,0.35)" : "2px solid #0968E5",
-                    color: "#0A66C2" // লিঙ্কডইন ব্লু সবসময় ক্লিয়ার থাকবে
+                  style={{
+                    background: isDarkMode
+                      ? "rgba(255,255,255,0.08)"
+                      : "rgba(255,255,255,0.35)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    border: isDarkMode
+                      ? "1px solid rgba(255,255,255,0.12)"
+                      : "1px solid rgba(255,255,255,0.9)",
+                    boxShadow: isDarkMode
+                      ? "0 8px 32px rgba(0,0,0,0.35)"
+                      : "0 8px 32px rgba(9,104,229,0.08)",
+                    color: "#0A66C2",
                   }}
                 >
                   <FaLinkedinIn size={20} />
@@ -97,10 +106,19 @@ export default function Home() {
                 <a
                   href="https://github.com/3mam-mehedi"
                   className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-md transition-all duration-500 hover:scale-125 hover:-translate-y-2"
-                  style={{ 
-                    backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#ffffff",
-                    border: isDarkMode ? "1px solid rgba(9,25,112,0.35)" : "2px solid #0968E5",
-                    color: isDarkMode ? "#ffffff" : "#0f172a" // FIX 2: লাইট মোডে সলিড ডার্ক গ্রে কালার
+                  style={{
+                    background: isDarkMode
+                      ? "rgba(255,255,255,0.08)"
+                      : "rgba(255,255,255,0.35)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    border: isDarkMode
+                      ? "1px solid rgba(255,255,255,0.12)"
+                      : "1px solid rgba(255,255,255,0.9)",
+                    boxShadow: isDarkMode
+                      ? "0 8px 32px rgba(0,0,0,0.35)"
+                      : "0 8px 32px rgba(9,104,229,0.08)",
+                    color: isDarkMode ? "#ffffff" : "#0f172a",
                   }}
                 >
                   <FaGithub size={20} />
@@ -110,10 +128,19 @@ export default function Home() {
                 <a
                   href="#"
                   className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-md transition-all duration-500 hover:scale-125 hover:-translate-y-2 hover:shadow-[0_0_25px_rgba(15,187,97,0.8)]"
-                  style={{ 
-                    backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "#ffffff",
-                    border: isDarkMode ? "1px solid rgba(9,25,112,0.35)" : "2px solid #0968E5",
-                    color: "#0fbb61" // জিমেইল গ্রিন সবসময় ক্লিয়ার থাকবে
+                  style={{
+                    background: isDarkMode
+                      ? "rgba(255,255,255,0.08)"
+                      : "rgba(255,255,255,0.35)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    border: isDarkMode
+                      ? "1px solid rgba(255,255,255,0.12)"
+                      : "1px solid rgba(255,255,255,0.9)",
+                    boxShadow: isDarkMode
+                      ? "0 8px 32px rgba(0,0,0,0.35)"
+                      : "0 8px 32px rgba(9,104,229,0.08)",
+                    color: "#0fbb61",
                   }}
                 >
                   <SiGmail size={20} />

@@ -135,14 +135,14 @@ export default function Experiences() {
           >
             <h1
               className="text-4xl font-bold mb-4 transition-colors duration-300"
-              style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
+              style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
             >
               Experiences
             </h1>
 
-            <p 
-              className="mb-8 transition-colors duration-300 font-medium" 
-              style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
+            <p
+              className="mb-8 transition-colors duration-300 font-medium"
+              style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}
             >
               Professional journey across development, reporting and UI work.
             </p>
@@ -167,7 +167,6 @@ export default function Experiences() {
                   rounded-3xl
                   border
                   p-6
-                  backdrop-blur-md
                   transition-all
                   duration-300
                   hover:scale-[1.02]
@@ -176,20 +175,20 @@ export default function Experiences() {
                   // লাইট মোডে সাদা রঙের ট্রান্সপারেন্ট আবরণ এবং ডার্ক মোডে ডার্ক ব্লু মেশানো ট্রান্সপারেন্ট গ্লাস
                   backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
                   borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
-                  boxShadow: isDarkMode 
-                    ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" 
+                  boxShadow: isDarkMode
+                    ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)"
                     : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
                 }}
               >
                 <div className="flex items-center justify-between mb-4 gap-3">
-                  <h2 
+                  <h2
                     className="text-xl font-bold transition-colors duration-300"
                     style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
                   >
                     {item.role}
                   </h2>
 
-                  <span 
+                  <span
                     className="text-xs uppercase tracking-[0.2em] font-bold whitespace-nowrap transition-colors duration-300"
                     style={{ color: isDarkMode ? "rgba(255,255,255,0.4)" : "#0968E5" }}
                   >
@@ -197,7 +196,7 @@ export default function Experiences() {
                   </span>
                 </div>
 
-                <p 
+                <p
                   className="flex items-center gap-2 mb-5 font-semibold transition-colors duration-300"
                   style={{ color: isDarkMode ? "#e2e8f0" : "#1e293b" }}
                 >
@@ -216,16 +215,27 @@ export default function Experiences() {
                         rounded-full
                         text-sm
                         font-medium
-                        backdrop-blur-sm
                         hover:scale-105
                         transition-all
                         duration-300
                       "
                       style={{
-                        backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.07)" : "rgba(255, 255, 255, 0.75)",
+                        backgroundColor: isDarkMode
+                          ? "rgba(255, 255, 255, 0.06)"
+                          : "rgba(255, 255, 255, 0.35)",
+
+                        backdropFilter: "blur(18px)",
+                        WebkitBackdropFilter: "blur(18px)",
+
                         color: isDarkMode ? "#ffffff" : "#0f172a",
-                        border: isDarkMode ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(9, 104, 229, 0.18)",
-                        boxShadow: isDarkMode ? "none" : "0 2px 8px rgba(9, 104, 229, 0.04)"
+
+                        border: isDarkMode
+                          ? "1px solid rgba(255, 255, 255, 0.12)"
+                          : "1px solid rgba(255, 255, 255, 0.45)",
+
+                        boxShadow: isDarkMode
+                          ? "0 8px 24px rgba(0,0,0,.18)"
+                          : "0 8px 24px rgba(9,104,229,.08)",
                       }}
                     >
                       <span

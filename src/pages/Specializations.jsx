@@ -114,7 +114,7 @@ export default function Specializations() {
 
       <section className="w-full px-4 lg:px-12 pt-24 pb-10">
         <div className="max-w-5xl mx-auto">
-          
+
           {/* HEADER SECTION */}
           <motion.div
             variants={fadeUp}
@@ -123,15 +123,15 @@ export default function Specializations() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h1 
+            <h1
               className="text-4xl font-bold mb-3 transition-colors duration-300"
-              style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
+              style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
             >
               Specializations
             </h1>
-            <p 
+            <p
               className="mb-10 max-w-2xl font-medium transition-colors duration-300"
-              style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
+              style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}
             >
               Core areas of expertise that help deliver strong frontend experiences and polished digital products.
             </p>
@@ -150,7 +150,7 @@ export default function Specializations() {
                   whileInView="show"
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="rounded-3xl border p-6 backdrop-blur-md hover:scale-[1.02] transition-all duration-300"
+                  className="rounded-3xl border p-6 hover:scale-[1.02] transition-all duration-300"
                   style={{
                     backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
                     borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
@@ -160,7 +160,7 @@ export default function Specializations() {
                   {/* Card Title */}
                   <div className="flex items-center gap-3 mb-4">
                     <MainIcon size={28} style={{ fill: "url(#specialGradient)" }} />
-                    <h2 
+                    <h2
                       className="text-xl font-bold transition-colors duration-300"
                       style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
                     >
@@ -169,7 +169,7 @@ export default function Specializations() {
                   </div>
 
                   {/* Card Description */}
-                  <p 
+                  <p
                     className="mb-5 leading-relaxed text-sm transition-colors duration-300"
                     style={{ color: isDarkMode ? "#slate-400" : "#475569" }}
                   >
@@ -177,20 +177,35 @@ export default function Specializations() {
                   </p>
 
                   {/* Badges */}
+                  {/* Badges */}
                   <div className="flex flex-wrap gap-2">
                     {item.badges.map((badge) => {
                       const BadgeIcon = badge.icon;
+
                       return (
                         <div
                           key={badge.label}
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all duration-300"
+                          className="flex items-center gap-2 px-3 py-1.5 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-105"
                           style={{
-                            backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "#ffffff",
-                            borderColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(9, 104, 229, 0.15)",
+                            backgroundColor: isDarkMode
+                              ? "rgba(255, 255, 255, 0.06)"
+                              : "rgba(255, 255, 255, 0.35)",
+
+                            backdropFilter: "blur(18px)",
+                            WebkitBackdropFilter: "blur(18px)",
+
+                            border: isDarkMode
+                              ? "1px solid rgba(255,255,255,0.12)"
+                              : "1px solid rgba(255,255,255,0.45)",
+
+                            boxShadow: isDarkMode
+                              ? "0 8px 24px rgba(0,0,0,.18)"
+                              : "0 8px 24px rgba(9,104,229,.08)",
                           }}
                         >
                           <BadgeIcon size={14} style={{ color: badge.color }} />
-                          <span 
+
+                          <span
                             className="text-xs font-semibold transition-colors duration-300"
                             style={{ color: isDarkMode ? "#ffffff" : "#334155" }}
                           >
@@ -204,13 +219,13 @@ export default function Specializations() {
                   {/* Progress Bar */}
                   <div className="mt-6">
                     <div className="flex items-center justify-between mb-2">
-                      <span 
+                      <span
                         className="text-sm transition-colors duration-300"
                         style={{ color: isDarkMode ? "#cbd5e1" : "#475569" }}
                       >
                         <GiProgression />
                       </span>
-                      <span 
+                      <span
                         className="text-sm font-bold transition-colors duration-300"
                         style={{ color: isDarkMode ? "#ffffff" : "#0968E5" }}
                       >
@@ -218,7 +233,7 @@ export default function Specializations() {
                       </span>
                     </div>
 
-                    <div 
+                    <div
                       className="w-full h-2 rounded-full overflow-hidden"
                       style={{
                         backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(9, 104, 229, 0.1)"

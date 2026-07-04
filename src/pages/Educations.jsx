@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Background from "../components/Background";
 
@@ -47,7 +48,8 @@ const educations = [
     summary:
       "Focused on Web Development and Software Engineering with strong academic foundation.",
     finalProject: "IoT-Based Smart Traffic Light System",
-    projectLink: "https://your-project-link.com",
+    projectLink: "/projects#traffic-light-system",
+    gradeLabel: "CGPA",
     gpa: "2.50 / 4.00",
     img: "/assets/edu/habibullah.jpg",
   },
@@ -56,6 +58,7 @@ const educations = [
     degree: "Higher Secondary Certificate (HSC)",
     period: "2016",
     summary: "Science background with strong technical interest.",
+    gradeLabel: "GPA",
     gpa: "3.92 / 5.00",
     img: "/assets/edu/kabi.jpg",
   },
@@ -64,6 +67,7 @@ const educations = [
     degree: "Secondary School Certificate (SSC)",
     period: "2014",
     summary: "Strong foundation in science and mathematics.",
+    gradeLabel: "GPA",
     gpa: "4.25 / 5.00",
     img: "/assets/edu/nawab.jpg",
   },
@@ -78,7 +82,7 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: "easeOut", delay }}
-      className="w-full rounded-3xl border p-6 backdrop-blur-md hover:scale-[1.02] transition-all duration-300"
+      className="w-full rounded-3xl border p-6  hover:scale-[1.02] transition-all duration-300"
       style={{
         backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
         borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
@@ -94,13 +98,13 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
           />
 
           <div>
-            <h2 
+            <h2
               className="text-lg font-bold transition-colors duration-300"
               style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
             >
               {item.degree}
             </h2>
-            <p 
+            <p
               className="text-sm font-medium transition-colors duration-300"
               style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
             >
@@ -109,7 +113,7 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
           </div>
         </div>
 
-        <span 
+        <span
           className="text-sm font-bold whitespace-nowrap transition-colors duration-300"
           style={{ color: isDarkMode ? "rgba(255,255,255,0.5)" : "#0968E5" }}
         >
@@ -117,7 +121,7 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
         </span>
       </div>
 
-      <p 
+      <p
         className="text-sm mb-4 transition-colors duration-300"
         style={{ color: isDarkMode ? "#94a3b8" : "#475569" }}
       >
@@ -126,14 +130,20 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
 
       {item.gpa && (
         <div className="font-semibold text-sm">
-          <span className="text-black/60 dark:text-white/60">GPA/CGPA: </span>
+          <span
+            style={{
+              color: isDarkMode ? "#ffffff" : "#16aa64",
+            }}
+          >
+            {item.gradeLabel}:
+          </span>{" "}
           <span style={gradientText}>{item.gpa}</span>
         </div>
       )}
 
       {item.finalProject && (
-        <div 
-          className="mt-4 rounded-2xl border backdrop-blur-sm p-4 transition-all duration-300"
+        <div
+          className="mt-4 rounded-2xl border  p-4 transition-all duration-300"
           style={{
             backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.03)" : "rgba(9, 104, 229, 0.04)",
             borderColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(9, 104, 229, 0.15)"
@@ -143,7 +153,7 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
             Final Year Project
           </p>
 
-          <h3 
+          <h3
             className="font-bold transition-colors duration-300"
             style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
           >
@@ -151,14 +161,12 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
           </h3>
 
           {item.projectLink && (
-            <a
-              href={item.projectLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-3 px-3.5 py-2 rounded-xl border border-[#0968E5]/30 bg-[#0968E5]/5 text-[#0968E5] dark:text-[#4ea1ff] text-xs font-semibold transition-all duration-300 hover:bg-[#0968E5]/20 hover:border-[#0968E5] hover:scale-105"
+            <Link
+              to={item.projectLink}
+              className="inline-flex items-center gap-2 mt-3 px-3.5 py-2 rounded-md border border-[#0968E5]/30 bg-[#0968E5]/5 text-[#0968E5] text-xs font-semibold"
             >
               View Project →
-            </a>
+            </Link>
           )}
         </div>
       )}
@@ -176,35 +184,35 @@ function SkillCard(props) {
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="w-full rounded-3xl border p-6 backdrop-blur-md hover:scale-[1.02] transition-all duration-300"
+      className="w-full rounded-3xl border p-6 hover:scale-[1.02] transition-all duration-300"
       style={{
         backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
         borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
         boxShadow: isDarkMode ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
       }}
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 lg:gap-1 mb-5">
         <div className="flex items-center gap-3">
           <div className="text-3xl" style={{ color: "#0968E5" }}>
             <props.icon />
           </div>
 
-          <h2 
-            className="font-bold text-lg transition-colors duration-300"
+          <h2
+            className="font-bold text-base sm:text-lg transition-colors duration-300 whitespace-nowrap"
             style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
           >
             {props.title}
           </h2>
         </div>
 
-        <div 
-          className="flex items-center flex-wrap gap-2 text-xs font-bold transition-colors duration-300"
+        <div
+          className="flex items-center gap-2 whitespace-nowrap text-xs font-bold transition-colors duration-300"
           style={{ color: isDarkMode ? "#cbd5e1" : "#0968E5" }}
         >
           {props.logo && (
             <img
               src={props.logo}
-              className="w-6 h-6 rounded-full object-cover bg-white p-0.5 shadow-md border"
+              className="w-8 h-8 rounded-full bg-white p-0.5 shadow-md border"
               style={{ borderColor: isDarkMode ? "rgba(255,255,255,0.1)" : "rgba(9,104,229,0.3)" }}
               alt="institute-logo"
             />
@@ -238,17 +246,40 @@ function SkillCard(props) {
           return (
             <div
               key={i}
-              className="flex items-center gap-2 p-2.5 rounded-xl backdrop-blur-sm transition-all duration-300 border"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl border backdrop-blur-xl transition-all duration-300 hover:scale-105"
               style={{
-                backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "#ffffff",
-                borderColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(9, 104, 229, 0.15)",
-                color: isDarkMode ? "#ffffff" : "#0f172a"
+                background: isDarkMode
+                  ? "rgba(255, 255, 255, 0.05)"
+                  : "rgba(255, 255, 255, 0.35)",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                border: isDarkMode
+                  ? "1px solid rgba(255,255,255,0.08)"
+                  : "1px solid rgba(255,255,255,0.45)",
+                boxShadow: isDarkMode
+                  ? "0 4px 18px rgba(0,0,0,0.18)"
+                  : "0 8px 24px rgba(9,104,229,0.08)",
+                color: isDarkMode ? "#ffffff" : "#0f172a",
               }}
             >
-              <div className="text-xl" style={{ color: iconColor }}>
+              <div
+                className="text-xl"
+                style={{
+                  color: iconColor,
+                  filter: "drop-shadow(0 0 6px rgba(255,255,255,0.2))",
+                }}
+              >
                 <Ico />
               </div>
-              <span className="text-xs font-medium">{it.label}</span>
+
+              <span
+                className="text-xs font-semibold"
+                style={{
+                  color: isDarkMode ? "#ffffff" : "#0f172a",
+                }}
+              >
+                {it.label}
+              </span>
             </div>
           );
         })}
@@ -293,7 +324,7 @@ export default function Education() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1 }}
             className="text-4xl font-bold mb-3 transition-colors duration-300"
-            style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
+            style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
           >
             Education
           </motion.h1>
@@ -305,7 +336,7 @@ export default function Education() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, delay: 0.1 }}
             className="mb-8 max-w-3xl font-medium transition-colors duration-300"
-            style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
+            style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}
           >
             My learning path combines formal study with practical training used directly in product work.
           </motion.p>
@@ -320,9 +351,9 @@ export default function Education() {
           </div>
 
           {/* SKILLS TITLE */}
-          <h1 
+          <h1
             className="text-4xl font-bold mb-6 transition-colors duration-300"
-            style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
+            style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
           >
             Skills
           </h1>
@@ -351,7 +382,19 @@ export default function Education() {
 
             <SkillCard
               icon={MdShoppingCartCheckout}
-              title="ADVANCED E-COMMERCE"
+              title={
+                <>
+                  <span className="hidden sm:inline">
+                    ADVANCED
+                    <br />
+                    E-COMMERCE
+                  </span>
+
+                  <span className="sm:hidden">
+                    ADVANCED E-COMMERCE
+                  </span>
+                </>
+              }
               logo="/assets/skills/soft.png"
               institute="Soft Park IT"
               year="2023"
@@ -418,15 +461,32 @@ export default function Education() {
                   whileInView="show"
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.02 }}
-                  className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl backdrop-blur-md hover:scale-110 hover:-translate-y-1 transition-all duration-300 border shadow-sm"
+                  className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl backdrop-blur-xl border transition-all duration-300 hover:shadow-xl"
                   style={{
-                    backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.25)" : "rgba(255, 255, 255, 0.5)",
-                    borderColor: isDarkMode ? "rgba(255, 255, 255, 0.08)" : "rgba(9, 104, 229, 0.2)"
+                    background: isDarkMode
+                      ? "rgba(255,255,255,0.05)"
+                      : "rgba(255,255,255,0.35)",
+
+                    backdropFilter: "blur(18px)",
+                    WebkitBackdropFilter: "blur(18px)",
+
+                    border: isDarkMode
+                      ? "1px solid rgba(255,255,255,0.08)"
+                      : "1px solid rgba(255,255,255,0.45)",
+
+                    boxShadow: isDarkMode
+                      ? "0 8px 24px rgba(0,0,0,0.25)"
+                      : "0 8px 24px rgba(9,104,229,0.08)",
                   }}
                 >
                   <div
-                    className="text-2xl md:text-3xl"
-                    style={{ color: item.color }}
+                    className="text-2xl md:text-3xl transition-transform duration-300 hover:scale-125"
+                    style={{
+                      color: item.color,
+                      filter: isDarkMode
+                        ? "drop-shadow(0 0 8px rgba(255,255,255,0.15))"
+                        : `drop-shadow(0 0 8px ${item.color}55)`,
+                    }}
                   >
                     {item.icon}
                   </div>
