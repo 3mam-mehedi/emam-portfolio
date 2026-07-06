@@ -48,7 +48,7 @@ const projects = [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
       { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
-      { name: "Firebase", icon: SiFirebase, color: "#dd2c00" },
+      { name: "Firebase", icon: SiFirebase, color: "text-[#dd2c00]" },
     ],
   },
   {
@@ -61,7 +61,7 @@ const projects = [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
       { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
-      { name: "Firebase", icon: SiFirebase, color: "#dd2c00" },
+      { name: "Firebase", icon: SiFirebase, color: "text-[#dd2c00]" },
     ],
   },
 ];
@@ -112,7 +112,14 @@ export default function Projects() {
                 }}
               >
                 <div className="flex flex-col sm:flex-row gap-5 mb-5">
-                  <div className="w-full sm:w-52 shrink-0 overflow-hidden rounded-xl border border-[#0968E5]/35 dark:border-white/10">
+                  <div
+                    className="w-full sm:w-52 shrink-0 overflow-hidden rounded-xl border"
+                    style={{
+                      borderColor: isDarkMode
+                        ? "rgba(255,255,255,0.10)"
+                        : "#afcef5",
+                    }}
+                  >
                     <img src={project.image} alt={project.name} className="w-full h-auto sm:h-28 object-cover" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -166,7 +173,7 @@ export default function Projects() {
                   style={{
                     borderTop: isDarkMode
                       ? "1px solid rgba(255,255,255,0.10)"
-                      : "1px solid #c2c0c0",
+                      : "1px solid #afcef5",
                   }}
                 >
                   <span className="text-xs uppercase tracking-[0.2em] transition-colors duration-300" style={{ color: isDarkMode ? "#94a3b8" : "#475569" }}>

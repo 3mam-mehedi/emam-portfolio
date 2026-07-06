@@ -40,9 +40,25 @@ export default function Navbar() {
     }
   }, [theme]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
+
+ 
 
   const navItems = [
     { name: "Home", path: "/", icon: House },
@@ -308,75 +324,93 @@ export default function Navbar() {
           Mobile Menu
       ========================= */}
 
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${open ? "max-h-[500px]" : "max-h-0"
-          }`}
-      >
-        <ul
-          className="w-full border-t border-b backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,.12)]"
-          style={{
-            background:
-              theme === "dark"
-                ? "rgba(10, 25, 70, 0.30)"
-                : "rgba(255, 255, 255, 0.25)",
+      <AnimatePresence>
+        {open && (
+  <motion.div
+  initial={{
+    opacity: 0,
+    rotateX: -25,
+    y: -20,
+  }}
+  animate={{
+    opacity: 1,
+    rotateX: 0,
+    y: 0,
+  }}
+  exit={{
+    opacity: 0,
+    rotateX: -25,
+    y: -20,
+  }}
+  transition={{
+    duration: 0.45,
+  }}
+  style={{
+    transformOrigin: "top",
+  }}
+>
+            <ul
+              className="w-full border-t backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,.12)]"
+              style={{
+                background:
+                  theme === "dark"
+                    ? "rgba(0, 0, 0, 0.85)"
+                    : "rgba(255, 255, 255, 0.70)",
 
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
+                backdropFilter: "blur(35px)",
+                WebkitBackdropFilter: "blur(35px)",
 
-            borderTopColor:
-              theme === "dark"
-                ? "rgba(255,255,255,0.08)"
-                : "rgba(255,255,255,0.45)",
+                borderTopColor:
+                  theme === "dark"
+                    ? "rgba(255,255,255,0.08)"
+                    : "rgba(255,255,255,0.80)",
 
-            borderBottomColor:
-              theme === "dark"
-                ? "rgba(255,255,255,0.08)"
-                : "rgba(255,255,255,0.45)",
+                boxShadow:
+                  theme === "dark"
+                    ? "0 12px 35px rgba(0,0,0,.35)"
+                    : "0 20px 45px rgba(9,104,229,.12)",
+              }}
+            >
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
 
-            boxShadow:
-              theme === "dark"
-                ? "0 12px 35px rgba(0,0,0,.35)"
-                : "0 12px 35px rgba(9,104,229,.08)",
-          }}
-        >
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = location.pathname === item.path;
-
-            return (
-              <li
-                key={item.name}
-                className="border-b border-[#0968E5]/15 last:border-b-0 dark:border-white/5"
-              >
-                <NavLink
-                  to={item.path}
-                  onClick={() => setOpen(false)}
-                  className={`flex items-center gap-4 px-8 py-4 transition-all duration-300 ${isActive
-                    ? "border-l-4 border-[#0968E5] bg-blue-50 dark:bg-white/10"
-                    : "border-l-4 border-transparent hover:bg-white/10 active:bg-white/15 dark:hover:bg-white/5 dark:active:bg-white/10"
-                    }`}
-                >
-                  <Icon
-                    size={20}
-                    strokeWidth={2.3}
-                    style={{ stroke: "url(#navGradient)" }}
-                  />
-
-                  <span
-                    style={{
-                      ...gradientText,
-                      textShadow: "0 1px 8px rgba(255,255,255,.15)",
-                    }}
-                    className="uppercase text-[13px] tracking-[2px] font-semibold"
+                return (
+                  <li
+                    key={item.name}
+                    className="border-b border-[#0968E5]/15 last:border-b-0 dark:border-white/5"
                   >
-                    {item.name}
-                  </span>
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+                    <NavLink
+                      to={item.path}
+                      onClick={() => setOpen(false)}
+                      className={`flex items-center gap-4 px-8 py-4 transition-all duration-300 ${isActive
+                        ? "border-l-4 border-[#0968E5] bg-blue-50 dark:bg-white/10"
+                        : "border-l-4 border-transparent hover:bg-white/10 active:bg-white/15 dark:hover:bg-white/5 dark:active:bg-white/10"
+                        }`}
+                    >
+                      <Icon
+                        size={20}
+                        strokeWidth={2.3}
+                        style={{ stroke: "url(#navGradient)" }}
+                      />
+
+                      <span
+                        style={{
+                          ...gradientText,
+                          textShadow: "0 1px 8px rgba(255,255,255,.15)",
+                        }}
+                        className="uppercase text-[13px] tracking-[2px] font-semibold"
+                      >
+                        {item.name}
+                      </span>
+                    </NavLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 } 

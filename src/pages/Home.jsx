@@ -88,11 +88,9 @@ export default function Home() {
                     background: isDarkMode
                       ? "rgba(255,255,255,0.08)"
                       : "rgba(255,255,255,0.35)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                    border: isDarkMode
-                      ? "1px solid rgba(255,255,255,0.12)"
-                      : "1px solid rgba(255,255,255,0.9)",
+                      border: isDarkMode
+                      ? "1px solid rgba(0, 11, 69, 1)"
+                      : "1px solid rgba(175, 206, 245, 1)",
                     boxShadow: isDarkMode
                       ? "0 8px 32px rgba(0,0,0,0.35)"
                       : "0 8px 32px rgba(9,104,229,0.08)",
@@ -110,11 +108,9 @@ export default function Home() {
                     background: isDarkMode
                       ? "rgba(255,255,255,0.08)"
                       : "rgba(255,255,255,0.35)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                    border: isDarkMode
-                      ? "1px solid rgba(255,255,255,0.12)"
-                      : "1px solid rgba(255,255,255,0.9)",
+                      border: isDarkMode
+                      ? "1px solid rgba(0, 11, 69, 1)"
+                      : "1px solid rgba(175, 206, 245, 1)",
                     boxShadow: isDarkMode
                       ? "0 8px 32px rgba(0,0,0,0.35)"
                       : "0 8px 32px rgba(9,104,229,0.08)",
@@ -132,11 +128,9 @@ export default function Home() {
                     background: isDarkMode
                       ? "rgba(255,255,255,0.08)"
                       : "rgba(255,255,255,0.35)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                    border: isDarkMode
-                      ? "1px solid rgba(255,255,255,0.12)"
-                      : "1px solid rgba(255,255,255,0.9)",
+                      border: isDarkMode
+                      ? "1px solid rgba(0, 11, 69, 1)"
+                      : "1px solid rgba(175, 206, 245, 1)",
                     boxShadow: isDarkMode
                       ? "0 8px 32px rgba(0,0,0,0.35)"
                       : "0 8px 32px rgba(9,104,229,0.08)",
