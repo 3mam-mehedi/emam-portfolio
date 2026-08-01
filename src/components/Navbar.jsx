@@ -174,7 +174,7 @@ export default function Navbar() {
       >
         <div className="w-full flex items-center justify-between lg:justify-center lg:gap-17">
           <img
-            src="/assets/logo/10.png"
+            src="/assets/logo/em.png"
             alt="logo"
             onClick={() => navigate("/")}
             className="w-10 h-10 rounded-full border border-[#0968E5]/35 bg-white/80 shadow-sm cursor-pointer dark:border-white/10 dark:bg-black/20"
