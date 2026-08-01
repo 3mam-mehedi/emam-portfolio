@@ -17,7 +17,7 @@ const projects = [
     name: "Traffic Light System",
     type: "Final Year Project",
     image: "/assets/projects/iot.png",
-    details: "React + Node.js business dashboard system with scalable architecture.",
+    details: "An IoT-based smart traffic light system for real-time monitoring and control.",
     live: "https://iot-trafic-light.vercel.app/",
     badges: [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
@@ -39,11 +39,11 @@ const projects = [
     ],
   },
   {
-    name: "TecTira",
-    type: "Communication App",
-    image: "/assets/projects/e-commerce.png",
-    details: "Socket.io realtime chat application with live messaging.",
-    live: "https://your-live-link.com",
+    name: "Tea Garden",
+    type: "Business Website",
+    image: "/assets/projects/tea.png",
+    details: "A platform for tracking daily sales, inventory, and top products.",
+    live: "https://tea-garden.vercel.app/",
     badges: [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
@@ -52,17 +52,16 @@ const projects = [
     ],
   },
   {
-    name: "E-commerce",
+    name: "Tectira",
     type: "Personal Branding",
     image: "/assets/projects/e-commerce.png",
-    details: "Modern animated portfolio showcasing skills, work, and contact system.",
+    details: "A branding e-commerce platform for custom products.",
     live: "https://your-live-link.com",
     badges: [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
       { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
-      { name: "Firebase", icon: SiFirebase, color: "text-[#dd2c00]" },
-    ],
+     ],
   },
 ];
 
@@ -141,18 +140,15 @@ export default function Projects() {
                     return (
                       <span
                         key={i}
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold backdrop-blur-md hover:scale-105 transition-all duration-300"
+                        className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold  hover:scale-105 transition-all duration-300"
                         style={{
                           backgroundColor: isDarkMode
                             ? "rgba(255, 255, 255, 0.06)"
                             : "rgba(255, 255, 255, 0.35)",
 
-                          backdropFilter: "blur(18px)",
-                          WebkitBackdropFilter: "blur(18px)",
-
                           border: isDarkMode
                             ? "1px solid rgba(255,255,255,0.12)"
-                            : "1px solid rgba(255,255,255,0.45)",
+                            : "1px solid rgba(9, 104, 229, 0.45)",
 
                           boxShadow: isDarkMode
                             ? "0 8px 24px rgba(0,0,0,.18)"

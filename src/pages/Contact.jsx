@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import Background from "../components/Background";
+
 
 const fadeLeft = {
   hidden: { x: -60, opacity: 0 },
@@ -97,7 +97,6 @@ export default function Contact() {
 
   return (
     <>
-      <Background />
 
       <section className="min-h-screen pt-24 pb-4 md:pb-10 px-4 lg:px-12">
         <div className="max-w-5xl mx-auto w-full">

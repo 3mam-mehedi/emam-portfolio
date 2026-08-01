@@ -177,7 +177,6 @@ export default function Specializations() {
                   </p>
 
                   {/* Badges */}
-                  {/* Badges */}
                   <div className="flex flex-wrap gap-2">
                     {item.badges.map((badge) => {
                       const BadgeIcon = badge.icon;
@@ -191,12 +190,9 @@ export default function Specializations() {
                               ? "rgba(255, 255, 255, 0.06)"
                               : "rgba(255, 255, 255, 0.35)",
 
-                            backdropFilter: "blur(18px)",
-                            WebkitBackdropFilter: "blur(18px)",
-
-                            border: isDarkMode
+                              border: isDarkMode
                               ? "1px solid rgba(255,255,255,0.12)"
-                              : "1px solid rgba(255,255,255,0.45)",
+                              : "1px solid rgba(9, 104, 229, 0.45)",
 
                             boxShadow: isDarkMode
                               ? "0 8px 24px rgba(0,0,0,.18)"

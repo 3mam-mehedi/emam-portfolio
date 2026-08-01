@@ -7,10 +7,12 @@ import Specializations from './pages/Specializations'
 import Projects from './pages/Projects'
 import Navbar from './components/Navbar'
 import ScrollToTop from '../app/components/ScrollToTop'
+import Background from './components/Background'
 
 function App() {
   return (
     <div className="min-h-screen bg-transparent text-black transition-colors duration-300 dark:text-slate-100">
+      <Background />
       <ScrollToTop />
       <Navbar />
 

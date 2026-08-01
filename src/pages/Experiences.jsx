@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Background from "../components/Background";
 
 import {
   FaBuilding,
@@ -122,8 +121,7 @@ export default function Experiences() {
 
   return (
     <>
-      <Background />
-
+     
       <div className="w-full px-4 lg:px-12 pt-24 pb-8">
         <div className="max-w-5xl mx-auto">
 
@@ -161,7 +159,6 @@ export default function Experiences() {
                   ease: "easeOut",
                   delay: idx * 0.15,
                 }}
-                /* 🚀 গ্লাস ইফেক্ট এবং ব্যাকড্রপ ব্লারের জন্য Tailwind ক্লাস ও ইনলাইন স্টাইল টিউনিং */
                 className="
                   w-full
                   rounded-3xl
@@ -172,7 +169,6 @@ export default function Experiences() {
                   hover:scale-[1.02]
                 "
                 style={{
-                  // লাইট মোডে সাদা রঙের ট্রান্সপারেন্ট আবরণ এবং ডার্ক মোডে ডার্ক ব্লু মেশানো ট্রান্সপারেন্ট গ্লাস
                   backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
                   borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
                   boxShadow: isDarkMode
@@ -204,7 +200,7 @@ export default function Experiences() {
                   {item.company}
                 </p>
 
-                {/* স্কিল ব্যাজগুলোকেও সেমি-গ্লাস লুক দেওয়া হলো */}
+                {/* স্কিল ব্যাজগুলো */}
                 <div className="flex flex-wrap gap-2">
                   {item.skills.map((skill, i) => (
                     <span
@@ -223,15 +219,12 @@ export default function Experiences() {
                         backgroundColor: isDarkMode
                           ? "rgba(255, 255, 255, 0.06)"
                           : "rgba(255, 255, 255, 0.35)",
-
-                        backdropFilter: "blur(18px)",
-                        WebkitBackdropFilter: "blur(18px)",
-
+                        
                         color: isDarkMode ? "#ffffff" : "#0f172a",
 
                         border: isDarkMode
                           ? "1px solid rgba(255, 255, 255, 0.12)"
-                          : "1px solid rgba(255, 255, 255, 0.45)",
+                          : "1px solid rgba(9, 104, 229, 0.45)",
 
                         boxShadow: isDarkMode
                           ? "0 8px 24px rgba(0,0,0,.18)"

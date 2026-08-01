@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Background from "../components/Background";
+
 
 /* ICONS */
 import {
@@ -44,7 +44,7 @@ const educations = [
   {
     institution: "Habibullah Bahar College (National University)",
     degree: "B.Sc. in Computer Science & Engineering",
-    period: "2016 - 2020",
+    period: "2017 - 2021",
     summary:
       "Focused on Web Development and Software Engineering with strong academic foundation.",
     finalProject: "IoT-Based Smart Traffic Light System",
@@ -254,8 +254,8 @@ function SkillCard(props) {
                 backdropFilter: "blur(18px)",
                 WebkitBackdropFilter: "blur(18px)",
                 border: isDarkMode
-                  ? "1px solid rgba(255,255,255,0.08)"
-                  : "1px solid rgba(255,255,255,0.45)",
+                  ? "1px solid rgba(255, 255, 255, 0.08)"
+                  : "1px solid rgba(9, 104, 229, 0.45)",
                 boxShadow: isDarkMode
                   ? "0 4px 18px rgba(0,0,0,0.18)"
                   : "0 8px 24px rgba(9,104,229,0.08)",
@@ -311,8 +311,7 @@ export default function Education() {
 
   return (
     <>
-      <Background />
-
+      
       <div className="w-full px-4 lg:px-12 pt-24 pb-8">
         <div className="max-w-5xl mx-auto">
 
@@ -355,7 +354,7 @@ export default function Education() {
             className="text-4xl font-bold mb-6 transition-colors duration-300"
             style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
           >
-            Skills
+            Courses
           </h1>
 
           {/* SKILLS LIST */}
@@ -415,7 +414,7 @@ export default function Education() {
               title="SPOKEN ENGLISH"
               logo="/assets/skills/saifurs.png"
               institute="Saifurs"
-              year="2022"
+              year="2024"
               duration="3 Months"
               isDarkMode={isDarkMode}
               items={[
@@ -430,8 +429,14 @@ export default function Education() {
           </div>
 
           {/* TECH STACK ICONS GRID (CIRCLE SECTION) */}
-          <div className="w-full overflow-hidden px-2 md:px-0 flex justify-center">
-            <div className="grid grid-cols-4 place-items-center gap-3 md:flex md:flex-wrap md:justify-center md:gap-6">
+          <div className="w-full overflow-hidden px-2 md:px-0 flex flex-col items-center">
+            <h1
+              className="text-4xl font-bold mb-6 transition-colors duration-300 self-start"
+              style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
+            >
+              Skills
+            </h1> 
+            <div className="grid grid-cols-4 place-items-center gap-3 md:flex md:flex-wrap md:justify-center md:gap-6 w-full">
               {[
                 { icon: <FaHtml5 />, color: "#e34a24" },
                 { icon: <FaCss3Alt />, color: "#2b57f8" },
