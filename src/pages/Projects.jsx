@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FaReact, FaJs, FaExternalLinkAlt } from "react-icons/fa";
 import { SiTailwindcss, SiFirebase } from "react-icons/si";
 import { IoLogoNodejs } from "react-icons/io";
+import { TbApi} from "react-icons/tb";
 import Background from "../components/Background";
 
 const fadeLeft = {
@@ -52,17 +53,42 @@ const projects = [
     ],
   },
   {
+    name: "Prayer Clock",
+    type: "Web application",
+    image: "/assets/projects/clock.png",
+    details: "Real-time Islamic prayer clock.",
+    live: "https://prayerclocklive.vercel.app/",
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
+      { name: "Api", icon: TbApi, color: "text-[#00c2ff]" },
+     ],
+  },
+ {
     name: "Tectira",
     type: "Personal Branding",
     image: "/assets/projects/e-commerce.png",
     details: "A branding e-commerce platform for custom products.",
-    live: "https://your-live-link.com",
+    live: "",
     badges: [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
       { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
      ],
   },
+ {
+    name: "Scoreboard",
+    type: "Web application",
+    image: "/assets/projects/e-commerce.png",
+    details: "A branding e-commerce platform for custom products.",
+    live: "",
+    badges: [
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
+      { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
+      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]" },
+     ],
+  },  
 ];
 
 export default function Projects() {
