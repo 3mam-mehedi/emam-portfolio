@@ -130,15 +130,17 @@ export default function Specializations() {
               Specializations
             </h1>
             <p
-              className="mb-10 max-w-2xl font-medium transition-colors duration-300"
+              className="mb-6 max-w-2xl font-medium  text-sm sm:text-sm md:text-xl lg:text-base transition-colors duration-300"
               style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}
             >
-              Core areas of expertise that help deliver strong frontend experiences and polished digital products.
+            Core expertise focused on delivering seamless, high-quality digital experiences.
+
+
             </p>
           </motion.div>
 
           {/* CARDS GRID */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:max-lg:grid-cols-1 lg:grid-cols-2 gap-6">
             {specializations.map((item, index) => {
               const MainIcon = item.icon;
 
@@ -170,7 +172,7 @@ export default function Specializations() {
 
                   {/* Card Description */}
                   <p
-                    className="mb-5 leading-relaxed text-sm transition-colors duration-300"
+                    className="mb-5 leading-relaxed text-sm md:max-lg:text-xl transition-colors duration-300"
                     style={{ color: isDarkMode ? "#slate-400" : "#475569" }}
                   >
                     {item.description}
@@ -184,13 +186,13 @@ export default function Specializations() {
                       return (
                         <div
                           key={badge.label}
-                          className="flex items-center gap-2 px-3 py-1.5 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-105"
+                          className="flex items-center gap-2 px-3 py-1.5 md:max-lg:px-5 md:max-lg:py-3 rounded-xl backdrop-blur-md transition-all duration-300 hover:scale-105"
                           style={{
                             backgroundColor: isDarkMode
                               ? "rgba(255, 255, 255, 0.06)"
                               : "rgba(255, 255, 255, 0.35)",
 
-                              border: isDarkMode
+                            border: isDarkMode
                               ? "1px solid rgba(255,255,255,0.12)"
                               : "1px solid rgba(9, 104, 229, 0.45)",
 
@@ -199,10 +201,10 @@ export default function Specializations() {
                               : "0 8px 24px rgba(9,104,229,.08)",
                           }}
                         >
-                          <BadgeIcon size={14} style={{ color: badge.color }} />
+                          <BadgeIcon size={14} className="md:max-lg:w-5 md:max-lg:h-5" style={{ color: badge.color }} />
 
                           <span
-                            className="text-xs font-semibold transition-colors duration-300"
+                            className="text-xs md:max-lg:text-lg font-semibold transition-colors duration-300"
                             style={{ color: isDarkMode ? "#ffffff" : "#334155" }}
                           >
                             {badge.label}
@@ -216,13 +218,13 @@ export default function Specializations() {
                   <div className="mt-6">
                     <div className="flex items-center justify-between mb-2">
                       <span
-                        className="text-sm transition-colors duration-300"
+                        className="text-sm md:max-lg:text-xl transition-colors duration-300"
                         style={{ color: isDarkMode ? "#cbd5e1" : "#475569" }}
                       >
                         <GiProgression />
                       </span>
                       <span
-                        className="text-sm font-bold transition-colors duration-300"
+                        className="text-sm md:max-lg:text-xl font-bold transition-colors duration-300"
                         style={{ color: isDarkMode ? "#ffffff" : "#0968E5" }}
                       >
                         {item.progress}%
@@ -230,7 +232,7 @@ export default function Specializations() {
                     </div>
 
                     <div
-                      className="w-full h-2 rounded-full overflow-hidden"
+                      className="w-full h-2 md:max-lg:h-4 rounded-full overflow-hidden"
                       style={{
                         backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(9, 104, 229, 0.1)"
                       }}

@@ -39,34 +39,55 @@ export default function Home() {
     <>
       <Background />
 
-      <section className="min-h-screen flex items-center px-4 lg:px-12 pt-2 lg:pt-24 pb-4 bg-white/5 dark:bg-transparent transition-colors duration-500">
+      <section className="min-h-screen flex items-center px-4 lg:px-12 pt-16 lg:pt-24 pb-4 bg-white/5 dark:bg-transparent transition-colors duration-500">
         <div className="max-w-5xl mx-auto w-full">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-14">
+          {/* FIX: Removed flex-col-reverse so Image comes first on Mobile/Tablet (md and below), and side-by-side layout starts from large screens (lg) */}
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-14">
+
+            {/* IMAGE SECTION */}
+            <motion.div
+              initial={{ y: -60, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="flex justify-center"
+            >
+              <div
+                className="relative w-44 h-56 sm:w-58 sm:h-70 md:w-64 md:h-80 lg:w-96 lg:h-[500px] overflow-hidden bg-white/50 dark:bg-white/5 shadow-[0_10px_40px_rgba(9,104,229,0.15)] dark:shadow-[0_0_40px_rgba(9,104,229,0.15)] transition-all duration-700 hover:scale-105 hover:shadow-[0_0_60px_rgba(9,104,229,0.24)] border-2 border-[#0968E5] dark:border-white/10"
+                style={{
+                  borderRadius: "38% 62% 63% 37% / 30% 30% 70% 70%"
+                }}
+              >
+                <img
+                  src="/assets/profile/2.png"
+                  className="w-full h-full object-cover"
+                  alt="profile"
+                />
+              </div>
+            </motion.div>
 
             {/* TEXT SECTION */}
             <motion.div
               initial={{ x: -60, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}
-              className="flex flex-col items-center md:items-start text-center md:text-left"
+              className="flex flex-col items-center lg:items-start text-center lg:text-left"
             >
               <h1
-                className="text-[32px] sm:text-[60px] md:text-[60px] leading-none font-bold"
+                className="text-[32px] sm:text-[45px] md:text-[50px] lg:text-[60px] leading-none font-bold"
                 style={gradientText}
               >
                 Emam Mehedi
               </h1>
 
-              {/* FIX 1: ইনলাইন স্টাইল দিয়ে লাইট মোডে সরাসরি কুচকুচে কালো (#0f172a) কালার হার্ডকোড করে দেওয়া হলো */}
               <p
-                className="mt-3 md:mt-6 text-base sm:text-xl md:text-3xl font-bold transition-colors duration-500"
+                className="mt-3 md:mt-4 lg:mt-6 text-base sm:text-lg md:text-xl lg:text-3xl font-bold transition-colors duration-500"
                 style={{ color: isDarkMode ? "#cbd5e1" : "#0f172a" }}
               >
                 Cross-Platform Engineer
               </p>
 
               {/* DOWNLOAD BUTTON */}
-              <div className="mt-6 md:mt-10">
+              <div className="mt-5 md:mt-6 lg:mt-10">
                 <a
                   href="/assets/Emam Mehedi.cv.pdf"
                   download
@@ -78,7 +99,7 @@ export default function Home() {
               </div>
 
               {/* SOCIAL LINKS */}
-              <div className="flex items-center gap-4 md:gap-5 mt-6 md:mt-8">
+              <div className="flex items-center gap-4 md:gap-5 mt-5 md:mt-6 lg:mt-8">
 
                 {/* LINKEDIN */}
                 <a
@@ -88,7 +109,7 @@ export default function Home() {
                     background: isDarkMode
                       ? "rgba(255,255,255,0.08)"
                       : "rgba(255,255,255,0.35)",
-                      border: isDarkMode
+                    border: isDarkMode
                       ? "1px solid rgba(0, 11, 69, 1)"
                       : "1px solid rgba(175, 206, 245, 1)",
                     boxShadow: isDarkMode
@@ -108,7 +129,7 @@ export default function Home() {
                     background: isDarkMode
                       ? "rgba(255,255,255,0.08)"
                       : "rgba(255,255,255,0.35)",
-                      border: isDarkMode
+                    border: isDarkMode
                       ? "1px solid rgba(0, 11, 69, 1)"
                       : "1px solid rgba(175, 206, 245, 1)",
                     boxShadow: isDarkMode
@@ -128,7 +149,7 @@ export default function Home() {
                     background: isDarkMode
                       ? "rgba(255,255,255,0.08)"
                       : "rgba(255,255,255,0.35)",
-                      border: isDarkMode
+                    border: isDarkMode
                       ? "1px solid rgba(0, 11, 69, 1)"
                       : "1px solid rgba(175, 206, 245, 1)",
                     boxShadow: isDarkMode
@@ -137,30 +158,10 @@ export default function Home() {
                     color: "#0fbb61",
                   }}
                 >
-                  <SiGmail size={20} />
+                  <SiGmail size=
+                  {20} />
                 </a>
 
-              </div>
-            </motion.div>
-
-            {/* IMAGE SECTION */}
-            <motion.div
-              initial={{ y: -60, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="flex justify-center"
-            >
-              <div
-                className="relative w-58 h-70 md:w-96 md:h-[500px] overflow-hidden bg-white/50 dark:bg-white/5 shadow-[0_10px_40px_rgba(9,104,229,0.15)] dark:shadow-[0_0_40px_rgba(9,104,229,0.15)] transition-all duration-700 hover:scale-105 hover:shadow-[0_0_60px_rgba(9,104,229,0.24)] border-2 border-[#0968E5] dark:border-white/10"
-                style={{
-                  borderRadius: "38% 62% 63% 37% / 30% 30% 70% 70%"
-                }}
-              >
-                <img
-                  src="/assets/profile/2.png"
-                  className="w-full h-full object-cover"
-                  alt="profile"
-                />
               </div>
             </motion.div>
 

@@ -35,7 +35,7 @@ const gradientText = {
 
 /* ================= ANIMATION ================= */
 const fadeLeft = {
-  hidden: { x: -60, opacity: 0 },
+  hidden: { x: -30, opacity: 0 },
   show: { x: 0, opacity: 1 },
 };
 
@@ -80,32 +80,32 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
       variants={fadeLeft}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1, ease: "easeOut", delay }}
-      className="w-full rounded-3xl border p-6  hover:scale-[1.02] transition-all duration-300"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut", delay }}
+      className="w-full rounded-2xl sm:rounded-3xl border p-4 sm:p-6 hover:scale-[1.01] sm:hover:scale-[1.02] transition-all duration-300"
       style={{
         backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
         borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
         boxShadow: isDarkMode ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
       }}
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4">
+        <div className="flex items-start sm:items-center gap-3 sm:gap-4">
           <img
             src={item.img}
-            className="w-14 h-14 rounded-full object-cover border-2 border-[#0968E5]"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-[#0968E5] shrink-0"
             alt="institution-logo"
           />
 
           <div>
             <h2
-              className="text-lg font-bold transition-colors duration-300"
+              className="text-base sm:text-lg font-bold transition-colors duration-300 leading-snug"
               style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
             >
               {item.degree}
             </h2>
             <p
-              className="text-sm font-medium transition-colors duration-300"
+              className="text-xs sm:text-sm font-medium transition-colors duration-300 mt-0.5"
               style={{ color: isDarkMode ? "#cbd5e1" : "#334155" }}
             >
               {item.institution}
@@ -114,7 +114,7 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
         </div>
 
         <span
-          className="text-sm font-bold whitespace-nowrap transition-colors duration-300"
+          className="text-xs sm:text-sm font-bold whitespace-nowrap self-start sm:self-auto transition-colors duration-300"
           style={{ color: isDarkMode ? "rgba(255,255,255,0.5)" : "#0968E5" }}
         >
           {item.period}
@@ -122,14 +122,14 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
       </div>
 
       <p
-        className="text-sm mb-4 transition-colors duration-300"
+        className="text-xs sm:text-sm mb-4 transition-colors duration-300 leading-relaxed"
         style={{ color: isDarkMode ? "#94a3b8" : "#475569" }}
       >
         {item.summary}
       </p>
 
       {item.gpa && (
-        <div className="font-semibold text-sm">
+        <div className="font-semibold text-xs sm:text-sm">
           <span
             style={{
               color: isDarkMode ? "#ffffff" : "#16aa64",
@@ -143,30 +143,32 @@ function EducationCard({ item, delay = 0, isDarkMode }) {
 
       {item.finalProject && (
         <div
-          className="mt-4 rounded-2xl border  p-4 transition-all duration-300"
+          className="mt-4 rounded-xl sm:rounded-2xl border p-3 sm:p-4 transition-all duration-300"
           style={{
             backgroundColor: isDarkMode ? "rgba(255, 255, 255, 0.03)" : "rgba(9, 104, 229, 0.04)",
             borderColor: isDarkMode ? "rgba(255, 255, 255, 0.05)" : "rgba(9, 104, 229, 0.15)"
           }}
         >
-          <p className="text-xs uppercase tracking-wider mb-1 font-bold" style={gradientText}>
+          <p className="text-[10px] sm:text-xs uppercase tracking-wider mb-1 font-bold" style={gradientText}>
             Final Year Project
           </p>
 
           <h3
-            className="font-bold transition-colors duration-300"
+            className="text-sm sm:text-base font-bold transition-colors duration-300"
             style={{ color: isDarkMode ? "#ffffff" : "#0f172a" }}
           >
             {item.finalProject}
           </h3>
 
           {item.projectLink && (
-            <Link
-              to={item.projectLink}
-              className="inline-flex items-center gap-2 mt-3 px-3.5 py-2 rounded-md border border-[#0968E5]/30 bg-[#0968E5]/5 text-[#0968E5] text-xs font-semibold"
-            >
-              View Project →
-            </Link>
+            <div className="mt-3">
+              <Link
+                to={item.projectLink}
+                className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-md border border-[#0968E5]/30 bg-[#0968E5]/5 text-[#0968E5] text-xs font-semibold hover:bg-[#0968E5]/10 transition-colors"
+              >
+                View Project →
+              </Link>
+            </div>
           )}
         </div>
       )}
@@ -182,23 +184,24 @@ function SkillCard(props) {
       variants={fadeLeft}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      className="w-full rounded-3xl border p-6 hover:scale-[1.02] transition-all duration-300"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-full rounded-2xl sm:rounded-3xl border p-4 sm:p-6 hover:scale-[1.01] sm:hover:scale-[1.02] transition-all duration-300"
       style={{
         backgroundColor: isDarkMode ? "rgba(10, 25, 70, 0.35)" : "rgba(255, 255, 255, 0.45)",
         borderColor: isDarkMode ? "rgba(255, 255, 255, 0.12)" : "rgba(9, 104, 229, 0.25)",
         boxShadow: isDarkMode ? "0 8px 32px 0 rgba(0, 0, 0, 0.37)" : "0 8px 32px 0 rgba(9, 104, 229, 0.08)"
       }}
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 lg:gap-1 mb-5">
+      {/* PC: 1 Line (lg:flex-row), Mobile/Tab: Stacked (flex-col) */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-4 mb-4 sm:mb-5">
         <div className="flex items-center gap-3">
-          <div className="text-3xl" style={{ color: "#0968E5" }}>
+          <div className="text-2xl sm:text-3xl shrink-0" style={{ color: "#0968E5" }}>
             <props.icon />
           </div>
 
           <h2
-            className="font-bold text-base sm:text-lg transition-colors duration-300 whitespace-nowrap"
+            className="font-bold text-sm sm:text-base md:text-lg transition-colors duration-300 break-words"
             style={{ color: isDarkMode ? "#ffffff" : "#091970" }}
           >
             {props.title}
@@ -206,13 +209,13 @@ function SkillCard(props) {
         </div>
 
         <div
-          className="flex items-center gap-2 whitespace-nowrap text-xs font-bold transition-colors duration-300"
+          className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-bold whitespace-nowrap overflow-x-auto lg:overflow-visible py-1 lg:py-0 transition-colors duration-300"
           style={{ color: isDarkMode ? "#cbd5e1" : "#0968E5" }}
         >
           {props.logo && (
             <img
               src={props.logo}
-              className="w-8 h-8 rounded-full bg-white p-0.5 shadow-md border"
+              className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white p-0.5 shadow-md border shrink-0"
               style={{ borderColor: isDarkMode ? "rgba(255,255,255,0.1)" : "rgba(9,104,229,0.3)" }}
               alt="institute-logo"
             />
@@ -246,7 +249,7 @@ function SkillCard(props) {
           return (
             <div
               key={i}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl border backdrop-blur-xl transition-all duration-300 hover:scale-105"
+              className="flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl border backdrop-blur-xl transition-all duration-300 hover:scale-[1.03]"
               style={{
                 background: isDarkMode
                   ? "rgba(255, 255, 255, 0.05)"
@@ -263,7 +266,7 @@ function SkillCard(props) {
               }}
             >
               <div
-                className="text-xl"
+                className="text-lg sm:text-xl shrink-0"
                 style={{
                   color: iconColor,
                   filter: "drop-shadow(0 0 6px rgba(255,255,255,0.2))",
@@ -273,7 +276,7 @@ function SkillCard(props) {
               </div>
 
               <span
-                className="text-xs font-semibold"
+                className="text-xs font-semibold truncate"
                 style={{
                   color: isDarkMode ? "#ffffff" : "#0f172a",
                 }}
@@ -311,8 +314,7 @@ export default function Education() {
 
   return (
     <>
-      
-      <div className="w-full px-4 lg:px-12 pt-24 pb-8">
+      <div className="w-full px-3 sm:px-6 lg:px-12 pt-20 sm:pt-24 pb-12">
         <div className="max-w-5xl mx-auto">
 
           {/* TITLE */}
@@ -320,9 +322,9 @@ export default function Education() {
             variants={fadeLeft}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1 }}
-            className="text-4xl font-bold mb-3 transition-colors duration-300"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl font-bold mb-2 sm:mb-3 transition-colors duration-300"
             style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
           >
             Education
@@ -332,16 +334,16 @@ export default function Education() {
             variants={fadeLeft}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1, delay: 0.1 }}
-            className="mb-8 max-w-3xl font-medium transition-colors duration-300"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-6  text-sm sm:text-sm md:text-xl lg:text-base max-w-3xl font-medium transition-colors duration-300"
             style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}
           >
             My learning path combines formal study with practical training used directly in product work.
           </motion.p>
 
           {/* EDUCATION LIST */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="md:col-span-2">
               <EducationCard item={educations[0]} isDarkMode={isDarkMode} />
             </div>
@@ -351,14 +353,14 @@ export default function Education() {
 
           {/* SKILLS TITLE */}
           <h1
-            className="text-4xl font-bold mb-6 transition-colors duration-300"
+            className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 transition-colors duration-300"
             style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
           >
             Courses
           </h1>
 
           {/* SKILLS LIST */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="md:col-span-2">
               <SkillCard
                 icon={FaLaravel}
@@ -429,14 +431,14 @@ export default function Education() {
           </div>
 
           {/* TECH STACK ICONS GRID (CIRCLE SECTION) */}
-          <div className="w-full overflow-hidden px-2 md:px-0 flex flex-col items-center">
+          <div className="w-full overflow-hidden px-1 sm:px-2 md:px-0 flex flex-col items-center">
             <h1
-              className="text-4xl font-bold mb-6 transition-colors duration-300 self-start"
+              className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 transition-colors duration-300 self-start"
               style={{ color: isDarkMode ? "#ffffff" : "#0949b7" }}
             >
               Skills
             </h1> 
-            <div className="grid grid-cols-4 place-items-center gap-3 md:flex md:flex-wrap md:justify-center md:gap-6 w-full">
+            <div className="grid grid-cols-4 sm:grid-cols-5 md:flex md:flex-wrap md:justify-center gap-2.5 sm:gap-4 md:gap-6 w-full">
               {[
                 { icon: <FaHtml5 />, color: "#e34a24" },
                 { icon: <FaCss3Alt />, color: "#2b57f8" },
@@ -465,8 +467,8 @@ export default function Education() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.02 }}
-                  className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-2xl backdrop-blur-xl border transition-all duration-300 hover:shadow-xl"
+                  transition={{ duration: 0.4, delay: i * 0.015 }}
+                  className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center rounded-xl sm:rounded-2xl backdrop-blur-xl border transition-all duration-300 hover:shadow-xl"
                   style={{
                     background: isDarkMode
                       ? "rgba(255,255,255,0.05)"
@@ -485,7 +487,7 @@ export default function Education() {
                   }}
                 >
                   <div
-                    className="text-2xl md:text-3xl transition-transform duration-300 hover:scale-125"
+                    className="text-xl sm:text-2xl md:text-3xl transition-transform duration-300 hover:scale-125"
                     style={{
                       color: item.color,
                       filter: isDarkMode

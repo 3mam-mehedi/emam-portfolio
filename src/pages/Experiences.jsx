@@ -139,7 +139,7 @@ export default function Experiences() {
             </h1>
 
             <p
-              className="mb-8 transition-colors duration-300 font-medium"
+              className="mb-6 text-sm sm:text-sm md:text-xl lg:text-base transition-colors duration-300 font-medium"
               style={{ color: isDarkMode ? "#cbd5e1" : "#000000" }}
             >
               Professional journey across development, reporting and UI work.

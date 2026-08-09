@@ -58,8 +58,6 @@ export default function Navbar() {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
- 
-
   const navItems = [
     { name: "Home", path: "/", icon: House },
     {
@@ -151,10 +149,11 @@ export default function Navbar() {
         relative
         flex
         items-center
-        justify-center
-        px-4
+        justify-between
+        px-6
+        md:px-10
         lg:px-12
-        py-2
+        py-3
         lg:py-1.5
 
         backdrop-blur-3xl
@@ -182,7 +181,7 @@ export default function Navbar() {
 
           {/* =========================
               Desktop Menu
-          ========================== */}
+          ========================= */}
 
           <div className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => {
@@ -204,12 +203,12 @@ export default function Navbar() {
                   <span style={gradientText}>{item.name}</span>
 
                   <span
-                    className={`absolute left-0 -bottom-1 h-[2px] rounded-full bg-gradient-to-r from-[#0968E5] to-[#091970] shadow-[0_0_12px_rgba(9,104,229,0.7)] transition-all duration-300 ${isActive
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                      }`}
+                    className={`absolute left-0 -bottom-1 h-[2px] rounded-full bg-gradient-to-r from-[#0968E5] to-[#091970] shadow-[0_0_12px_rgba(9,104,229,0.7)] transition-all duration-300 ${
+                      isActive
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                    }`}
                   />
-
                 </NavLink>
               );
             })}
@@ -258,10 +257,10 @@ export default function Navbar() {
           </div>
 
           {/* =========================
-              Mobile Controls
-          ========================== */}
+              Mobile & Tablet Controls
+          ========================= */}
           <div className="flex items-center gap-4 lg:hidden ml-auto">
-            {/* Mobile Theme Button */}
+            {/* Theme Button */}
             <button
               onClick={toggleTheme}
               className="relative overflow-hidden rounded-full border border-white/20 bg-white/20 backdrop-blur-2xl shadow-inner w-10 h-10 flex items-center justify-center cursor-pointer dark:border-white/10 dark:bg-black/20"
@@ -302,10 +301,10 @@ export default function Navbar() {
               </AnimatePresence>
             </button>
 
-            {/* Mobile Menu Button */}
+            {/* Menu Button */}
             <button
               onClick={() => setOpen(!open)}
-              className="cursor-pointer"
+              className="cursor-pointer p-1"
             >
               {open ? (
                 <X size={28} style={{ stroke: "url(#navGradient)" }} />
@@ -321,41 +320,41 @@ export default function Navbar() {
       </div>
 
       {/* =========================
-          Mobile Menu
+          Mobile & Tablet Menu Drawer
       ========================= */}
 
       <AnimatePresence>
         {open && (
-  <motion.div
-  initial={{
-    opacity: 0,
-    rotateX: -25,
-    y: -20,
-  }}
-  animate={{
-    opacity: 1,
-    rotateX: 0,
-    y: 0,
-  }}
-  exit={{
-    opacity: 0,
-    rotateX: -25,
-    y: -20,
-  }}
-  transition={{
-    duration: 0.45,
-  }}
-  style={{
-    transformOrigin: "top",
-  }}
->
+          <motion.div
+            initial={{
+              opacity: 0,
+              rotateX: -25,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              rotateX: 0,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              rotateX: -25,
+              y: -20,
+            }}
+            transition={{
+              duration: 0.45,
+            }}
+            style={{
+              transformOrigin: "top",
+            }}
+          >
             <ul
               className="w-full border-t backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,.12)]"
               style={{
                 background:
                   theme === "dark"
-                    ? "rgba(0, 0, 0, 0.85)"
-                    : "rgba(255, 255, 255, 0.70)",
+                    ? "rgba(0, 0, 0, 0.88)"
+                    : "rgba(255, 255, 255, 0.80)",
 
                 backdropFilter: "blur(35px)",
                 WebkitBackdropFilter: "blur(35px)",
@@ -383,10 +382,11 @@ export default function Navbar() {
                     <NavLink
                       to={item.path}
                       onClick={() => setOpen(false)}
-                      className={`flex items-center gap-4 px-8 py-4 transition-all duration-300 ${isActive
-                        ? "border-l-4 border-[#0968E5] bg-blue-50 dark:bg-white/10"
-                        : "border-l-4 border-transparent hover:bg-white/10 active:bg-white/15 dark:hover:bg-white/5 dark:active:bg-white/10"
-                        }`}
+                      className={`flex items-center gap-4 px-8 md:px-12 py-4 transition-all duration-300 ${
+                        isActive
+                          ? "border-l-4 border-[#0968E5] bg-blue-50 dark:bg-white/10"
+                          : "border-l-4 border-transparent hover:bg-white/10 active:bg-white/15 dark:hover:bg-white/5 dark:active:bg-white/10"
+                      }`}
                     >
                       <Icon
                         size={20}
@@ -413,4 +413,4 @@ export default function Navbar() {
       </AnimatePresence>
     </nav>
   );
-} 
+}

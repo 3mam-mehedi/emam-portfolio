@@ -117,7 +117,7 @@ export default function Contact() {
             </h1>
 
             <p
-              className="mb-6 md:mb-10 text-base font-medium transition-colors duration-300"
+              className="mb-6 font-medium text-sm sm:text-sm md:text-xl lg:text-base transition-colors duration-300"
               style={{
                 color: isDarkMode ? "#cbd5e1" : "#000000",
               }}
