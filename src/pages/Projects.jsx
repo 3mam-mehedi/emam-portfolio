@@ -91,11 +91,11 @@ const projects = [
     ],
   },
   {
-    name: "English Learning",
+    name: "SmartGrammar",
     type: "Educational Website",
-    image: "/assets/projects/eng.png",
+    image: "/assets/projects/eng.jpg",
     details: "Learn grammar, sentences, and everyday English with Bangla.",
-    live: "",
+    live: "https://smartgrammer.vercel.app/",
     badges: [
       { name: "React", icon: FaReact, color: "text-[#61DAFB]" },
       { name: "Tailwind", icon: SiTailwindcss, color: "text-[#06B6D4]" },
